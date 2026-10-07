@@ -1,0 +1,14 @@
+{
+  "name": "Deutsch desde cero",
+  "short_name": "Deutsch",
+  "description": "Curso de alemán A1 para hispanohablantes",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F1F2EE",
+  "theme_color": "#F1F2EE",
+  "icons": [
+    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

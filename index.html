@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Deutsch">
+<meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121419" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="manifest" href="manifest.json">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* modo app: navegación abajo */
+.app .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+.app .nav a{text-align:center;font-size:13px;padding:8px 4px;border-radius:10px}
+.app main{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.app .top .wrap{flex-wrap:nowrap}
+</style>
+<script>try{if(navigator.standalone||matchMedia('(display-mode: standalone)').matches)document.documentElement.classList.add('app');}catch(e){}</script>
+</head>
+<body>
+<title>Deutsch desde cero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: cuaderno de clase — barra superior fija, índice de lecciones a la izquierda y la lección en una columna de lectura; der/die/das en azul/rojo/verde como en los libros de texto alemanes, amarillo de marcatextos para lo que se escucha */
+:root{
+  --paper:#F1F2EE; --card:#FFFFFF; --ink:#16181D; --muted:#5B5F6C; --line:#D6D8D0; --soft:#E6E8E1;
+  --hl:#FFD60A; --hl-soft:rgba(255,206,0,.42); --on-hl:#16181D;
+  --m:#1D5BD6; --f:#CF3027; --n:#12844A; --pl:#6A6E7B;
+  --m-bg:rgba(29,91,214,.10); --f-bg:rgba(207,48,39,.10); --n-bg:rgba(18,132,74,.10);
+  --ok:#12844A; --bad:#C0392B;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121419; --card:#1B1E25; --ink:#ECEDE8; --muted:#A2A6B2; --line:#2E323B; --soft:#23262E;
+    --hl:#FFD60A; --hl-soft:rgba(255,214,10,.26); --on-hl:#16181D;
+    --m:#76A2FF; --f:#FF7468; --n:#4FCB88; --pl:#A2A6B2;
+    --m-bg:rgba(118,162,255,.14); --f-bg:rgba(255,116,104,.14); --n-bg:rgba(79,203,136,.14);
+    --ok:#4FCB88; --bad:#FF7468;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121419; --card:#1B1E25; --ink:#ECEDE8; --muted:#A2A6B2; --line:#2E323B; --soft:#23262E;
+  --hl:#FFD60A; --hl-soft:rgba(255,214,10,.26); --on-hl:#16181D;
+  --m:#76A2FF; --f:#FF7468; --n:#4FCB88; --pl:#A2A6B2;
+  --m-bg:rgba(118,162,255,.14); --f-bg:rgba(255,116,104,.14); --n-bg:rgba(79,203,136,.14);
+  --ok:#4FCB88; --bad:#FF7468;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hl);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:16px}
+h1,h2,h3{text-wrap:balance;margin:0}
+.disp{font-family:var(--display);font-variation-settings:"wdth" 125;font-stretch:125%}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap;padding-block:10px}
+.brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:800;font-size:18px;letter-spacing:-.01em;margin-right:auto}
+.brand b{background:var(--hl);color:var(--on-hl);padding:0 6px;border-radius:3px}
+.brand span{font-weight:500;color:var(--muted);font-size:15px}
+.nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav a{text-decoration:none;font-size:15px;font-weight:700;padding:6px 12px;border-radius:999px;color:var(--muted)}
+.nav a:hover{color:var(--ink);background:var(--soft)}
+.nav a[aria-current="page"]{color:var(--ink);background:var(--soft)}
+.slow{border:1px solid var(--line);background:transparent;border-radius:999px;padding:5px 12px;font-size:14px;cursor:pointer;color:var(--muted);display:flex;align-items:center;gap:6px}
+.slow[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.notice{background:var(--soft);font-size:14px;color:var(--muted);padding-block:8px}
+
+/* speakable words */
+.say{border:0;background:linear-gradient(transparent 58%,var(--hl-soft) 58%);padding:0 2px;margin:0 -1px;cursor:pointer;font-weight:700;border-radius:2px;line-height:inherit;text-align:inherit}
+.say:hover{background:var(--hl-soft)}
+.say.on{background:var(--hl);color:var(--on-hl)}
+.g-m{color:var(--m)} .g-f{color:var(--f)} .g-n{color:var(--n)} .g-p{color:var(--pl)}
+
+main{padding-block:28px 64px}
+
+/* home */
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:end;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.hero h1{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:900;font-size:clamp(56px,11vw,124px);line-height:.88;letter-spacing:-.03em}
+.hero h1 .ger{display:inline-block;background:var(--hl);color:var(--on-hl);padding:0 .08em .02em;border-radius:4px}
+.hero h1 small{display:block;font-size:.38em;font-weight:600;letter-spacing:-.01em;margin-top:.25em;color:var(--muted)}
+.hero p{margin:0 0 14px;max-width:46ch;font-size:18px}
+.first{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:20px;margin-bottom:18px}
+.cta{display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:var(--ink);color:var(--paper);font-weight:700;padding:12px 20px;border-radius:999px}
+.cta:hover{opacity:.9}
+.meter{display:flex;align-items:center;gap:12px;margin-top:18px;font-size:14px;color:var(--muted)}
+.meter .bar{flex:1;max-width:240px;height:8px;background:var(--soft);border-radius:99px;overflow:hidden}
+.meter .bar i{display:block;height:100%;background:var(--hl);border-radius:99px}
+
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:28px 0}
+.leg{padding:14px 16px;border-radius:10px}
+.leg.m{background:var(--m-bg)} .leg.f{background:var(--f-bg)} .leg.n{background:var(--n-bg)}
+.leg b{font-family:var(--display);font-variation-settings:"wdth" 125;font-size:30px;font-weight:900;display:block;line-height:1.1}
+.leg span{font-size:14px;color:var(--muted)}
+.sect-h{font-family:var(--display);font-variation-settings:"wdth" 110;font-weight:800;font-size:22px;margin:36px 0 12px}
+.lab{font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+
+.route{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.route a{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;text-decoration:none;padding:14px 4px;border-bottom:1px solid var(--line)}
+.route a:hover .rt{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.rn{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:800;font-size:22px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rt{font-weight:700;display:block;line-height:1.3}
+.rs{font-size:14px;color:var(--muted)}
+.chip{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;border:1px solid var(--line);color:var(--muted)}
+.chip.done{background:var(--n-bg);color:var(--n);border-color:transparent}
+.chip.next{background:var(--hl);color:var(--on-hl);border-color:transparent}
+.after{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.after > div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.after > div:last-child:nth-child(odd){grid-column:1/-1}
+.after h3{font-size:17px;margin-bottom:4px}
+.after p{margin:0;font-size:15px;color:var(--muted)}
+
+/* lesson layout */
+.lay{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;align-items:start}
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);display:flex;flex-direction:column;gap:2px;font-size:14px}
+.rail a{display:grid;grid-template-columns:26px minmax(0,1fr) 10px;gap:8px;align-items:center;text-decoration:none;padding:6px 8px;border-radius:6px;color:var(--muted)}
+.rail a:hover{background:var(--soft);color:var(--ink)}
+.rail a[aria-current="page"]{background:var(--card);color:var(--ink);font-weight:700;box-shadow:0 0 0 1px var(--line)}
+.rail .n{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:12px}
+.rail .d{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.rail .d.done{background:var(--n)}
+.lesson{max-width:740px;min-width:0}
+.lh .lab{display:block;margin-bottom:8px}
+.lh h1{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:900;font-size:clamp(34px,6vw,54px);line-height:1;letter-spacing:-.02em}
+.lh h2{font-weight:400;font-size:20px;color:var(--muted);margin-top:8px}
+.lh{padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.part{margin-top:30px}
+.part h3{font-family:var(--display);font-variation-settings:"wdth" 110;font-weight:800;font-size:21px;margin-bottom:10px}
+.part p{margin:0 0 12px}
+.part ul{margin:0 0 12px;padding-left:20px}
+.part li{margin-bottom:4px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700}
+.tip{background:var(--hl-soft);border-radius:10px;padding:14px 18px;margin-top:26px}
+.tip .lab{color:var(--ink);display:block;margin-bottom:4px}
+.tip p{margin:0}
+.dialog{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 0}
+.dl{display:grid;grid-template-columns:90px minmax(0,1fr);gap:4px 14px;padding:8px 18px}
+.dl + .dl{border-top:1px dashed var(--line)}
+.dl .who{font-size:13px;font-weight:700;color:var(--muted);padding-top:3px}
+.dl .es{display:block;font-size:14px;color:var(--muted)}
+
+.vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.vcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;align-content:start}
+.vcard:hover{border-color:var(--muted)}
+.vcard.on{border-color:var(--hl);box-shadow:0 0 0 2px var(--hl)}
+.vde{font-weight:700;font-size:18px;line-height:1.3;min-width:0;overflow-wrap:anywhere}
+.vde small{font-weight:400;font-size:12px;color:var(--muted)}
+.ves{grid-column:1/-1;font-size:15px}
+.vp{grid-column:1/-1;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.spk{width:18px;height:18px;color:var(--muted);flex:none}
+
+/* quiz */
+.quiz{display:flex;flex-direction:column;gap:14px}
+.q{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:14px 16px;margin:0;min-width:0}
+.q legend{padding:0;font-weight:700;float:left;width:100%;margin-bottom:10px}
+.qn{font-family:var(--mono);font-size:13px;color:var(--muted);margin-right:6px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;clear:both}
+.opt{text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:9px 12px;cursor:pointer;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--n-bg);color:var(--ink);font-weight:700}
+.opt.wrong{border-color:var(--bad);background:var(--f-bg);text-decoration:line-through}
+.qfb{margin:10px 0 0;font-size:15px}
+.qfb b.ok{color:var(--ok)} .qfb b.no{color:var(--bad)}
+.qresult{border-radius:10px;padding:16px 18px;background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.qresult strong{font-family:var(--display);font-variation-settings:"wdth" 125;font-size:26px}
+.qresult .btn{background:var(--paper);color:var(--ink)}
+.btn{border:0;background:var(--ink);color:var(--paper);font-weight:700;padding:9px 16px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-size:15px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.hl{background:var(--hl);color:var(--on-hl)}
+.btn:disabled{opacity:.4;cursor:default}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.pager a{text-decoration:none;display:flex;flex-direction:column;max-width:48%;min-width:0}
+.pager a span{font-size:13px;color:var(--muted)}
+.pager a b{font-family:var(--display);font-variation-settings:"wdth" 110}
+.pager a.nx{text-align:right;margin-left:auto}
+
+/* widgets */
+.widget{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+.wbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
+.wbar .lab{margin-right:auto}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--card)}
+.seg button{border:0;background:transparent;padding:4px 12px;border-radius:999px;font-size:14px;cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.sel{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
+/* pronunciación */
+.pron{max-width:780px}
+.ptabs{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 20px}
+.ptabs button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;font-weight:700;font-size:15px;cursor:pointer;color:var(--muted)}
+.ptabs button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.cats{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.cats button{border:1px solid var(--line);background:transparent;border-radius:999px;padding:4px 12px;font-size:14px;cursor:pointer;color:var(--muted);font-family:var(--mono)}
+.cats button[aria-pressed="true"]{background:var(--hl);color:var(--on-hl);border-color:var(--hl)}
+.play{width:88px;height:88px;border-radius:50%;border:0;background:var(--hl);color:var(--on-hl);cursor:pointer;display:grid;place-items:center}
+.play svg{width:40px;height:40px}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;max-width:460px}
+.pair .opt{text-align:center;font-size:22px;font-weight:700;padding:16px 8px}
+.pair .opt small{display:block;font-size:14px;font-weight:400;color:var(--muted);margin-top:2px}
+.snds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.snd{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.snd h3{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:900;font-size:30px;line-height:1}
+.snd p{margin:0;font-size:15px}
+.snd .ex{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:18px}
+.snd .more{font-size:14px;color:var(--muted)}
+.shl{display:flex;flex-direction:column;gap:10px}
+.sh{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center}
+.sh .de{font-size:18px}
+.sh .es{font-size:14px;color:var(--muted);display:block}
+.sh .st{grid-column:1/-1;font-size:14px;font-weight:700;min-height:0}
+.sh .st:empty{display:none}
+.sh .bar{grid-column:1/-1;height:6px;background:var(--soft);border-radius:99px;overflow:hidden}
+.sh .bar i{display:block;height:100%;width:0;background:var(--hl)}
+.sh.run{border-color:var(--hl);box-shadow:0 0 0 2px var(--hl)}
+.tw{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.tw .de{font-size:19px;line-height:1.45}
+.tw .es{font-size:14px;color:var(--muted)}
+.tw .row{justify-content:flex-start}
+@media (max-width:620px){ .snds{grid-template-columns:minmax(0,1fr)} .sh{grid-template-columns:minmax(0,1fr)} }
+.backup{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;max-width:740px}
+.backup p{margin:0;font-size:15px;color:var(--muted)}
+.backup textarea{width:100%;font-family:var(--mono);font-size:13px;line-height:1.4;resize:vertical;word-break:break-all}
+.row.left{justify-content:flex-start}
+.confirm{background:var(--hl-soft);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+select,input[type="text"],input[type="number"],textarea{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.wbody{padding:20px 18px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.bignum{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:900;font-size:clamp(48px,10vw,76px);line-height:1;font-variant-numeric:tabular-nums}
+.numword{font-size:22px;overflow-wrap:anywhere;max-width:100%}
+.row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.fb{font-size:16px;min-height:1.6em}
+.fb .ok{color:var(--ok);font-weight:700} .fb .no{color:var(--bad);font-weight:700}
+.clock{width:150px;height:150px;max-width:100%}
+.copts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;max-width:460px}
+.prompt{font-size:20px}
+.prompt .pr{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:800;font-size:30px}
+.ans{min-height:52px;width:100%;max-width:520px;border:2px dashed var(--line);border-radius:10px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center}
+.tok{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:6px 12px;cursor:pointer;font-weight:700;font-size:17px}
+.ans .tok{background:var(--hl-soft)}
+.ans .tok,.ans{color:var(--ink)}
+
+/* gender trainer + review */
+.trainer{max-width:640px;margin:0 auto}
+.th h1{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:900;font-size:clamp(34px,6vw,52px);line-height:1}
+.th p{color:var(--muted);margin:10px 0 0;max-width:56ch}
+.stats{display:flex;gap:24px;margin:22px 0 14px;font-size:14px;color:var(--muted)}
+.stats b{display:block;font-family:var(--display);font-variation-settings:"wdth" 125;font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:34px 20px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
+.gword{font-family:var(--display);font-variation-settings:"wdth" 118;font-weight:800;font-size:clamp(36px,9vw,64px);line-height:1.05;overflow-wrap:anywhere;max-width:100%}
+.gword .art{margin-right:.25em}
+.gmean{color:var(--muted);font-size:17px;min-height:1.6em}
+.ghint{font-size:15px;min-height:1.5em;max-width:44ch}
+.gbtns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.gb{border:0;border-radius:12px;padding:16px 8px;font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:900;font-size:26px;cursor:pointer;color:#fff}
+.gb.m{background:var(--m)} .gb.f{background:var(--f)} .gb.n{background:var(--n)}
+.gb:disabled{opacity:.35;cursor:default}
+.gb.pick{opacity:1;outline:3px solid var(--ink);outline-offset:2px}
+.gb span{display:block;font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.06em;opacity:.9}
+.kbd{font-size:13px;color:var(--muted);text-align:center;margin-top:10px}
+.flip{min-height:250px;justify-content:center}
+.boxes{display:flex;gap:6px;margin-top:12px;justify-content:center;flex-wrap:wrap}
+.boxes span{font-size:12px;font-family:var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+
+@media (max-width:900px){
+  .lay{grid-template-columns:minmax(0,1fr)}
+  .rail{display:none}
+  .hero{grid-template-columns:minmax(0,1fr);gap:18px}
+  .route,.after{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .opts,.copts{grid-template-columns:minmax(0,1fr)}
+  .legend{grid-template-columns:minmax(0,1fr)}
+  .leg{display:flex;align-items:baseline;gap:12px}
+  .dl{grid-template-columns:minmax(0,1fr)}
+  .brand span{display:none}
+  .gb{font-size:22px;padding:14px 4px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .opt,.gb,.vcard,.say{transition:background-color .15s,border-color .15s,opacity .15s}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><b>Deutsch</b> desde cero <span>· A1</span></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#inicio" data-nav="inicio">Lecciones</a>
+      <a href="#aussprache" data-nav="aussprache">Pronunciación</a>
+      <a href="#repaso" data-nav="repaso">Repaso</a>
+      <a href="#genero" data-nav="genero">der · die · das</a>
+    </nav>
+    <button class="slow" id="slow" type="button" aria-pressed="false" title="Voz más lenta">
+      <svg class="spk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>Voz lenta
+    </button>
+  </div>
+</header>
+<div class="notice" id="notice" hidden><div class="wrap">Tu navegador no tiene voz en alemán disponible. Usa la guía de pronunciación que aparece debajo de cada palabra.</div></div>
+<main class="wrap" id="app"></main>
+
+<script>
+/* ============ CONTENIDO ============ */
+// vocab: [alemán, español, pronunciación aproximada, género m/f/n/p]
+const L = [
+{ id:'l1', de:'Das Alphabet', es:'Cómo suena el alemán',
+  parts:[
+  {t:'p', html:`El alemán usa el mismo alfabeto que el español, más cuatro letras: <b>ä, ö, ü</b> y <b>ß</b>. La buena noticia: casi todo se pronuncia como se escribe. Con las reglas de esta lección podrás leer en voz alta cualquier palabra, aunque todavía no sepas qué significa.`},
+  {t:'p', html:`Toca cualquier palabra resaltada para escucharla, como [[Hallo]] o [[Deutschland]].`},
+  {t:'table', h:'Sonidos distintos al español', head:['Letras','Suena como','Ejemplo'], rows:[
+    ['w','v con los dientes sobre el labio','[[Wasser]]'],
+    ['v','f','[[Vater]]'],
+    ['z','ts','[[Zeit]]'],
+    ['j','y','[[ja]]'],
+    ['s + vocal','s zumbada, como una abeja','[[Sonne]]'],
+    ['sch','sh','[[Schule]]'],
+    ['sp / st al inicio','shp / sht','[[Sport]], [[Straße]]'],
+    ['ei','ai','[[mein]]'],
+    ['ie','i larga','[[Liebe]]'],
+    ['eu / äu','oi','[[heute]]'],
+    ['ch después de a, o, u','j suave de garganta','[[Buch]]'],
+    ['ch después de e, i, ä, ö, ü','sh muy suave, con la boca sonriendo','[[ich]]'],
+    ['h después de vocal','muda; alarga la vocal','[[Sohn]]'],
+    ['ß','ss','[[groß]]'],
+    ['ä','e abierta','[[Mädchen]]'],
+    ['ö','e con los labios en «o»','[[schön]]'],
+    ['ü','i con los labios en «u»','[[über]]'],
+  ]},
+  {t:'tip', html:`Para la ö y la ü: di «e» o «i» y, sin mover la lengua, redondea los labios como si fueras a silbar.`},
+  {t:'p', h:'Tres reglas más', html:`<ul>
+    <li>Al final de palabra, b, d y g suenan p, t y k: [[Tag]] suena «taak» y [[und]] suena «unt».</li>
+    <li>La -er final suena casi como una «a»: [[Vater]] ≈ «FA-ta».</li>
+    <li>La -e final sí se pronuncia: [[Name]] es «NA-me».</li></ul>
+    También vas a notar que <b>todos los sustantivos se escriben con mayúscula</b>, estén donde estén: [[das Haus]], [[die Zeit]].`},
+  {t:'p', html:`<a class="btn hl" href="#aussprache">Practicar estos sonidos</a>`},
+  ],
+  vocab:[['Wasser','agua','VA-ser','n'],['Vater','padre','FA-ta','m'],['Zeit','tiempo','TSAIT','f'],['ja','sí','YA'],['nein','no','NAIN'],['Sonne','sol','ZO-ne','f'],['Schule','escuela','SHU-le','f'],['Straße','calle','SHTRA-se','f'],['Liebe','amor','LII-be','f'],['heute','hoy','HOI-te'],['Buch','libro','BUJ','n'],['ich','yo','ISH (suave)'],['schön','bonito','SHÖN'],['Mädchen','niña, muchacha','MEED-shen','n'],['Tag','día','TAAK','m'],['Name','nombre','NA-me','m']],
+  quiz:[
+    {q:'¿Cómo suena la «w» de [[Wasser]]?', o:['Como una v con los dientes sobre el labio','Como «gu»','Como «u»','No suena'], a:0, e:'La w alemana es la «v» inglesa: dientes de arriba sobre el labio de abajo.'},
+    {q:'¿Cómo se pronuncia [[Zeit]]?', o:['tsait','seit','zeit con z española','tseet'], a:0, e:'z suena «ts» y ei suena «ai».'},
+    {q:'¿Qué combinación suena «ai»?', o:['ei','ie','eu','ü'], a:0, e:'ei = ai (mein). ie es una i larga (Liebe).'},
+    {q:'¿Cómo suena [[heute]]?', o:['HOI-te','HEU-te','HU-te','HEI-te'], a:0, e:'eu y äu suenan «oi».'},
+    {q:'¿Qué letra suena como «f»?', o:['v','w','z','j'], a:0, e:'v = f en casi todas las palabras alemanas (Vater, viel).'},
+    {q:'La palabra [[Tag]] termina sonando…', o:['taak','taag','taj','tash'], a:0, e:'Al final de palabra la g se endurece y suena k.'},
+  ]},
+
+{ id:'l2', de:'Hallo!', es:'Saludos y despedidas',
+  parts:[
+  {t:'table', h:'Saludar según la hora', head:['Alemán','Cuándo'], rows:[
+    ['[[Guten Morgen]]','En la mañana, hasta las 10 u 11'],
+    ['[[Guten Tag]]','Durante el día; el saludo formal más común'],
+    ['[[Guten Abend]]','Al llegar en la tarde-noche, desde las 6 aprox.'],
+    ['[[Gute Nacht]]','Solo al despedirte para ir a dormir'],
+    ['[[Hallo]]','Informal, a cualquier hora'],
+  ]},
+  {t:'p', html:`En el sur de Alemania y en Austria oirás [[Grüß Gott]] y [[Servus]]; en el norte, [[Moin]]. En Suiza, [[Grüezi]].`},
+  {t:'p', h:'¿du o Sie?', html:`<b>du</b> es «tú» y <b>Sie</b> es «usted», siempre con mayúscula. En Alemania el <b>Sie</b> se usa más que el «usted» en México: con desconocidos, en tiendas, con tus superiores y en el trabajo hasta que alguien te ofrezca el du. Entre jóvenes, amigos, familia y en internet se usa <b>du</b>.`},
+  {t:'dialog', h:'Formal', lines:[
+    ['Herr Ruiz','Guten Tag, Frau Weber!','¡Buenas tardes, señora Weber!'],
+    ['Frau Weber','Guten Tag, Herr Ruiz! Wie geht es Ihnen?','¡Buenas tardes, señor Ruiz! ¿Cómo está usted?'],
+    ['Herr Ruiz','Danke, gut. Und Ihnen?','Bien, gracias. ¿Y usted?'],
+    ['Frau Weber','Auch gut, danke.','También bien, gracias.'],
+  ]},
+  {t:'dialog', h:'Informal', lines:[
+    ['Tim','Hallo, Lena! Wie geht’s?','¡Hola, Lena! ¿Qué tal?'],
+    ['Lena','Super! Und dir?','¡Súper! ¿Y tú?'],
+    ['Tim','Es geht.','Más o menos.'],
+    ['Lena','Tschüss, bis morgen!','¡Adiós, hasta mañana!'],
+  ]},
+  {t:'tip', html:`[[Bitte]] sirve para casi todo: «por favor», «de nada» (Danke! — Bitte!), «¿perdón?, ¿cómo?» (Bitte?) y «aquí tiene» al entregar algo.`},
+  ],
+  vocab:[['Hallo','hola','HA-lo'],['Guten Morgen','buenos días','GU-ten MOR-guen'],['Guten Tag','buen día, buenas tardes','GU-ten TAAK'],['Guten Abend','buenas noches (al llegar)','GU-ten A-bent'],['Gute Nacht','buenas noches (al dormir)','GU-te NAJT'],['Tschüss','adiós','CHÜS'],['Auf Wiedersehen','adiós (formal)','auf VII-der-zeen'],['Bis morgen','hasta mañana','bis MOR-guen'],['Wie geht’s?','¿qué tal?','vi GUEETS'],['Wie geht es Ihnen?','¿cómo está usted?','vi GUEET es II-nen'],['Gut, danke.','bien, gracias','GUUT, DAN-ke'],['Es geht.','más o menos','es GUEET'],['Danke','gracias','DAN-ke'],['Bitte','por favor, de nada','BI-te'],['Entschuldigung','perdón, disculpe','ent-SHUL-di-gung'],['Herr','señor','HER','m'],['Frau','señora, mujer','FRAU','f']],
+  quiz:[
+    {q:'Son las 9 de la noche y llegas a una cena. Dices…', o:['Guten Abend!','Gute Nacht!','Guten Morgen!','Tschüss!'], a:0, e:'Gute Nacht es solo para despedirte antes de dormir.'},
+    {q:'Tu nuevo jefe te saluda. ¿Cómo le preguntas cómo está?', o:['Wie geht es Ihnen?','Wie geht’s?','Und dir?','Wie heißt du?'], a:0, e:'Con un superior se usa Sie: Wie geht es Ihnen?'},
+    {q:'Alguien te dice «Danke!». Respondes…', o:['Bitte!','Danke!','Hallo!','Entschuldigung!'], a:0, e:'Bitte también significa «de nada».'},
+    {q:'«Sie» con mayúscula significa…', o:['usted','tú','ella','nosotros'], a:0, e:'Sie con mayúscula es el trato formal.'},
+    {q:'«Es geht» significa…', o:['más o menos','muy bien','ya se fue','adiós'], a:0, e:'Es geht = ahí va, más o menos.'},
+    {q:'¿Cuál es la despedida formal?', o:['Auf Wiedersehen','Tschüss','Hallo','Moin'], a:0, e:'Tschüss es informal; Auf Wiedersehen es formal.'},
+  ]},
+
+{ id:'l3', de:'Ich heiße…', es:'Presentarte',
+  parts:[
+  {t:'p', html:`Hay tres formas de decir tu nombre: [[Ich heiße Carlos]], [[Mein Name ist Carlos]] o simplemente [[Ich bin Carlos]].`},
+  {t:'table', h:'Preguntas y respuestas', head:['Pregunta (du / Sie)','Respuesta'], rows:[
+    ['[[Wie heißt du?]] / [[Wie heißen Sie?]]','[[Ich heiße …]]'],
+    ['[[Woher kommst du?]] / [[Woher kommen Sie?]]','[[Ich komme aus Mexiko.]]'],
+    ['[[Wo wohnst du?]] / [[Wo wohnen Sie?]]','[[Ich wohne in …]]'],
+    ['[[Was bist du von Beruf?]]','[[Ich bin Ingenieur.]]'],
+    ['[[Welche Sprachen sprichst du?]]','[[Ich spreche Spanisch und ein bisschen Deutsch.]]'],
+  ]},
+  {t:'tip', html:`La profesión va sin artículo, igual que en español: [[Ich bin Lehrer]] («soy maestro»), no «ein Lehrer». La forma femenina agrega <b>-in</b>: Lehrer → [[Lehrerin]], Aktuar → [[Aktuarin]].`},
+  {t:'p', h:'Países', html:`Casi todos van sin artículo: [[aus Mexiko]], [[aus Spanien]], [[aus Kolumbien]], [[aus Deutschland]]. Algunos sí lo llevan: [[aus der Schweiz]], [[aus den USA]].`},
+  {t:'dialog', h:'En la clase de idiomas', lines:[
+    ['Lena','Hallo! Ich bin Lena. Wie heißt du?','¡Hola! Soy Lena. ¿Cómo te llamas?'],
+    ['Carlos','Hallo, Lena! Ich heiße Carlos.','¡Hola, Lena! Me llamo Carlos.'],
+    ['Lena','Woher kommst du, Carlos?','¿De dónde eres, Carlos?'],
+    ['Carlos','Ich komme aus Mexiko. Und du?','Soy de México. ¿Y tú?'],
+    ['Lena','Ich komme aus Hamburg. Freut mich!','Soy de Hamburgo. ¡Mucho gusto!'],
+  ]},
+  ],
+  vocab:[['Ich heiße …','me llamo …','ish HAI-se'],['Mein Name ist …','mi nombre es …','main NA-me ist'],['Wie heißt du?','¿cómo te llamas?','vi HAIST du'],['Woher kommst du?','¿de dónde eres?','vo-HEER KOMST du'],['Ich komme aus …','soy de …','ish KO-me aus'],['Wo wohnst du?','¿dónde vives?','vo VOONST du'],['Ich wohne in …','vivo en …','ish VOO-ne in'],['Ich spreche Spanisch.','hablo español','ish SHPRE-she SHPA-nish'],['ein bisschen','un poco','ain BIS-shen'],['Freut mich!','¡mucho gusto!','FROIT mish'],['Beruf','profesión','be-RUUF','m'],['Lehrer','maestro','LEE-ra','m'],['Lehrerin','maestra','LEE-re-rin','f'],['Student','estudiante (h.)','shtu-DENT','m'],['Studentin','estudiante (m.)','shtu-DEN-tin','f'],['Arzt','médico','ARTST','m'],['Ingenieur','ingeniero','in-she-NIÖR','m'],['Aktuar','actuario','ak-tu-AR','m']],
+  quiz:[
+    {q:'«¿De dónde eres?»', o:['Woher kommst du?','Wo wohnst du?','Wie heißt du?','Was bist du von Beruf?'], a:0, e:'woher = de dónde; wo = dónde.'},
+    {q:'«Soy maestra»', o:['Ich bin Lehrerin.','Ich bin eine Lehrerin.','Ich heiße Lehrerin.','Ich habe Lehrerin.'], a:0, e:'Profesión sin artículo y con -in para el femenino.'},
+    {q:'«Freut mich!» significa…', o:['¡Mucho gusto!','¡Me alegro por ti!','¡Gracias!','¡Hasta luego!'], a:0, e:'Se dice al conocer a alguien.'},
+    {q:'Para preguntarle su nombre a un señor desconocido…', o:['Wie heißen Sie?','Wie heißt du?','Wer bist du?','Heißt du?'], a:0, e:'Con desconocidos, Sie.'},
+    {q:'«Ich wohne in Berlin» significa…', o:['Vivo en Berlín','Soy de Berlín','Voy a Berlín','Trabajo en Berlín'], a:0, e:'wohnen = vivir, residir.'},
+    {q:'¿Cuál país lleva artículo?', o:['die Schweiz','Mexiko','Spanien','Deutschland'], a:0, e:'aus der Schweiz. La mayoría de los países no llevan artículo.'},
+  ]},
+
+{ id:'l4', de:'Die Zahlen', es:'Los números',
+  parts:[
+  {t:'p', html:`Del 0 al 12 hay que memorizarlos. Del 13 al 19 se forman con la unidad + <b>zehn</b> (diez): [[dreizehn]], [[vierzehn]]. Ojo con dos que pierden letras: [[sechzehn]] (no «sechszehn») y [[siebzehn]] (no «siebenzehn»).`},
+  {t:'tip', html:`Del 21 en adelante, <b>las unidades van primero</b>: 21 es «uno y veinte», [[einundzwanzig]]; 47 es [[siebenundvierzig]]. Y se escribe todo junto, en una sola palabra.`},
+  {t:'table', h:'Decenas', head:['Número','Alemán'], rows:[
+    ['20','[[zwanzig]]'],['30','[[dreißig]] (con ß, no con z)'],['40','[[vierzig]]'],['50','[[fünfzig]]'],['60','[[sechzig]]'],['70','[[siebzig]]'],['80','[[achtzig]]'],['90','[[neunzig]]'],['100','[[hundert]] o [[einhundert]]'],['1000','[[tausend]]'],
+  ]},
+  {t:'widget', h:'Practica con números', w:'numbers'},
+  {t:'tip', html:`En Alemania la coma es el punto decimal y el punto separa miles: <b>1.250,5</b> es mil doscientos cincuenta punto cinco. Justo al revés que en México. Con dinero: 3,50 € se dice [[drei Euro fünfzig]].`},
+  {t:'p', html:`Por teléfono muchos dicen [[zwo]] en lugar de zwei, para no confundirlo con drei.`},
+  ],
+  vocab:[['null','cero','NUL'],['eins','uno','AINS'],['zwei','dos','TSVAI'],['drei','tres','DRAI'],['vier','cuatro','FIA'],['fünf','cinco','FÜNF'],['sechs','seis','SEKS'],['sieben','siete','ZII-ben'],['acht','ocho','AJT'],['neun','nueve','NOIN'],['zehn','diez','TSEEN'],['elf','once','ELF'],['zwölf','doce','TSVÖLF'],['zwanzig','veinte','TSVAN-tsish'],['dreißig','treinta','DRAI-sish'],['hundert','cien','HUN-dert'],['tausend','mil','TAU-zent']],
+  quiz:[
+    {q:'21 en alemán es…', o:['einundzwanzig','zwanzigeins','zwanzigundeins','einszwanzig'], a:0, e:'Unidad + und + decena: ein-und-zwanzig.'},
+    {q:'16 en alemán es…', o:['sechzehn','sechszehn','sechzig','sechzehen'], a:0, e:'sechzehn pierde la s de sechs.'},
+    {q:'30 en alemán es…', o:['dreißig','dreizig','dreizehn','dreißzig'], a:0, e:'dreißig es la única decena con ß.'},
+    {q:'«siebenundfünfzig» es…', o:['57','75','17','507'], a:0, e:'sieben (7) und fünfzig (50) = 57.'},
+    {q:'En Alemania, «2,5» significa…', o:['dos y medio','dos mil quinientos','veinticinco','dos punto cero cinco'], a:0, e:'La coma es el separador decimal.'},
+    {q:'¿Cómo dices 3,50 €?', o:['drei Euro fünfzig','drei Komma fünfzig Euro','dreißig Euro fünf','fünfzig drei Euro'], a:0, e:'Euros y luego céntimos: drei Euro fünfzig.'},
+  ]},
+
+{ id:'l5', de:'der, die, das', es:'El género de las cosas',
+  parts:[
+  {t:'p', html:`En alemán cada sustantivo es masculino, femenino o neutro, y lo marca su artículo: <b class="g-m">der</b>, <b class="g-f">die</b> o <b class="g-n">das</b>. El problema es que casi nunca coincide con el español: [[der Mond]] es «<i>la</i> luna», [[die Sonne]] es «<i>el</i> sol» y [[das Mädchen]] («la niña») es neutro.`},
+  {t:'tip', html:`Nunca aprendas un sustantivo solo. Apréndelo con su artículo, como si fuera parte de la palabra: no «Tisch», sino «<b class="g-m">der</b> Tisch». En las escuelas alemanas se usan estos colores: <b class="g-m">azul</b> para der, <b class="g-f">rojo</b> para die y <b class="g-n">verde</b> para das.`},
+  {t:'table', h:'Pistas que sí funcionan', head:['Terminación o grupo','Artículo','Ejemplo'], rows:[
+    ['-ung, -heit, -keit, -schaft','<b class="g-f">die</b>','[[die Zeitung]], [[die Freiheit]]'],
+    ['-ion, -tät','<b class="g-f">die</b>','[[die Information]], [[die Universität]]'],
+    ['muchas en -e','<b class="g-f">die</b>','[[die Lampe]], [[die Katze]]'],
+    ['-chen, -lein (diminutivos)','<b class="g-n">das</b>','[[das Mädchen]], [[das Brötchen]]'],
+    ['-um, -ment','<b class="g-n">das</b>','[[das Museum]], [[das Dokument]]'],
+    ['un verbo usado como sustantivo','<b class="g-n">das</b>','[[das Essen]]'],
+    ['días, meses, estaciones','<b class="g-m">der</b>','[[der Montag]], [[der Mai]], [[der Sommer]]'],
+    ['-ismus, -ling','<b class="g-m">der</b>','[[der Tourismus]], [[der Frühling]]'],
+  ]},
+  {t:'p', h:'Palabras compuestas', html:`El alemán junta palabras para formar otras. El artículo lo decide <b>la última</b>: das Haus + die Tür = [[die Haustür]] (la puerta de la casa). die Hand + der Schuh = [[der Handschuh]] (el guante, literalmente «zapato de mano»).`},
+  {t:'p', h:'Un, una y el plural', html:`El artículo indefinido: <b class="g-m">der</b> → <b>ein</b>, <b class="g-f">die</b> → <b>eine</b>, <b class="g-n">das</b> → <b>ein</b>. En plural todo es <b>die</b>, sin importar el género: [[die Kinder]], [[die Lampen]], [[die Autos]]. La forma del plural cambia de palabra a palabra, así que también vale la pena aprenderla.`},
+  {t:'p', html:`<a class="btn hl" href="#genero">Entrenar der · die · das</a>`},
+  ],
+  vocab:[['Tisch','mesa','TISH','m'],['Stuhl','silla','SHTUUL','m'],['Mann','hombre','MAN','m'],['Hund','perro','HUNT','m'],['Apfel','manzana','AP-fel','m'],['Frau','mujer','FRAU','f'],['Katze','gato','KAT-se','f'],['Lampe','lámpara','LAM-pe','f'],['Tür','puerta','TÜÜR','f'],['Zeitung','periódico','TSAI-tung','f'],['Kind','niño','KINT','n'],['Haus','casa','HAUS','n'],['Auto','coche','AU-to','n'],['Fenster','ventana','FENS-ta','n'],['Mädchen','niña','MEED-shen','n'],['Kinder','niños','KIN-da','p']],
+  quiz:[
+    {q:'¿Qué artículo lleva «Zeitung»?', o:['die','der','das'], a:0, e:'Todas las palabras en -ung son die.'},
+    {q:'¿Qué artículo lleva «Mädchen»?', o:['das','die','der'], a:0, e:'-chen siempre es das, aunque sea una niña.'},
+    {q:'En plural, el artículo siempre es…', o:['die','der','das','depende del género'], a:0, e:'Plural = die, para todos.'},
+    {q:'¿Qué artículo lleva «Sonne» (sol)?', o:['die','der','das'], a:0, e:'die Sonne, al contrario que en español.'},
+    {q:'«Haus» es das y «Tür» es die. ¿Y «Haustür»?', o:['die','das','der'], a:0, e:'Decide la última palabra: die Tür → die Haustür.'},
+    {q:'«Auto» es das. ¿Cómo dices «un coche»?', o:['ein Auto','eine Auto','einen Auto','das ein Auto'], a:0, e:'das → ein.'},
+  ]},
+
+{ id:'l6', de:'sein und haben', es:'Ser/estar y tener',
+  parts:[
+  {t:'table', h:'Los pronombres', head:['Alemán','Español'], rows:[
+    ['[[ich]]','yo'],['[[du]]','tú'],['[[er]] · [[sie]] · [[es]]','él · ella · neutro (para cosas «das»)'],['[[wir]]','nosotros'],['[[ihr]]','ustedes (informal; es el plural de du)'],['[[sie]]','ellos, ellas'],['[[Sie]]','usted, ustedes (formal)'],
+  ]},
+  {t:'p', html:`<b>sein</b> cubre a la vez «ser» y «estar», y <b>haben</b> es «tener». Son irregulares, así que se memorizan:`},
+  {t:'table', head:['','sein (ser, estar)','haben (tener)'], rows:[
+    ['ich','[[bin]]','[[habe]]'],['du','[[bist]]','[[hast]]'],['er / sie / es','[[ist]]','[[hat]]'],['wir','[[sind]]','[[haben]]'],['ihr','[[seid]]','[[habt]]'],['sie / Sie','[[sind]]','[[haben]]'],
+  ]},
+  {t:'tip', html:`¿«sie» es ella o ellos? El verbo lo revela: [[sie ist]] = ella es; [[sie sind]] = ellos son. Y si va con mayúscula a mitad de la frase, [[Sie sind]], es «usted es».`},
+  {t:'p', h:'Igual y distinto al español', html:`Como en español: [[Ich habe Hunger]] (tengo hambre), [[Ich habe Durst]] (tengo sed), [[Ich habe Zeit]] (tengo tiempo). Pero la edad va con <b>sein</b>: [[Ich bin 25 Jahre alt]], literalmente «soy 25 años viejo».`},
+  ],
+  vocab:[['Hunger','hambre','HUN-ga','m'],['Durst','sed','DURST','m'],['Angst','miedo','ANGST','f'],['müde','cansado','MÜ-de'],['krank','enfermo','KRANK'],['glücklich','feliz','GLÜK-lish'],['alt','viejo; … años','ALT'],['jung','joven','YUNG'],['verheiratet','casado','fer-HAI-ra-tet'],['ledig','soltero','LEE-dish'],['Ich bin …','soy, estoy','ish BIN'],['Ich habe …','tengo','ish HA-be']],
+  quiz:[
+    {q:'wir ___ (sein)', o:['sind','seid','bin','ist'], a:0, e:'wir sind = nosotros somos.'},
+    {q:'du ___ (haben)', o:['hast','habt','hat','habe'], a:0, e:'du hast = tú tienes.'},
+    {q:'«Tengo 30 años»', o:['Ich bin 30 Jahre alt.','Ich habe 30 Jahre.','Ich habe 30 Jahre alt.','Ich bin 30 Jahre.'], a:0, e:'La edad va con sein y «alt».'},
+    {q:'er ___ müde.', o:['ist','hat','bist','sind'], a:0, e:'Estar cansado = müde sein.'},
+    {q:'«ihr» corresponde a…', o:['ustedes (informal)','ella','usted','ellos'], a:0, e:'ihr es el plural de du.'},
+    {q:'«Sie sind» puede significar…', o:['ellos son o usted es','solo «ella es»','nosotros somos','tú eres'], a:0, e:'sie sind = ellos son; Sie sind = usted es.'},
+  ]},
+
+{ id:'l7', de:'Ich lerne Deutsch', es:'Verbos en presente',
+  parts:[
+  {t:'p', html:`Casi todos los infinitivos terminan en <b>-en</b>: [[wohnen]], [[lernen]], [[spielen]]. Quita el -en y te queda la raíz (wohn-, lern-, spiel-). A esa raíz le pegas la terminación de cada persona.`},
+  {t:'table', head:['Persona','Terminación','wohnen','arbeiten'], rows:[
+    ['ich','-e','[[wohne]]','[[arbeite]]'],['du','-st','[[wohnst]]','[[arbeitest]]'],['er / sie / es','-t','[[wohnt]]','[[arbeitet]]'],['wir','-en','[[wohnen]]','[[arbeiten]]'],['ihr','-t','[[wohnt]]','[[arbeitet]]'],['sie / Sie','-en','[[wohnen]]','[[arbeiten]]'],
+  ]},
+  {t:'tip', html:`Si la raíz termina en -t o -d (arbeit-, find-), se agrega una e antes de -st y -t para poder pronunciarlo: [[du arbeitest]], [[er findet]].`},
+  {t:'p', h:'Un solo presente para todo', html:`[[Ich lerne Deutsch]] significa «aprendo alemán» y también «estoy aprendiendo alemán». Con una palabra de tiempo sirve incluso para el futuro: [[Morgen spiele ich Fußball]] = «mañana juego futbol».`},
+  {t:'widget', h:'Conjuga', w:'conj'},
+  {t:'p', h:'Un adelanto: verbos que cambian la vocal', html:`Algunos verbos cambian la vocal solo con du y er/sie/es: sprechen → [[du sprichst]], [[er spricht]]; essen → [[du isst]], [[er isst]]; fahren → [[du fährst]], [[er fährt]]. El resto de personas es regular.`},
+  ],
+  vocab:[['wohnen','vivir (residir)','VOO-nen'],['lernen','aprender, estudiar','LER-nen'],['spielen','jugar; tocar (música)','SHPII-len'],['kaufen','comprar','KAU-fen'],['machen','hacer','MA-jen'],['kochen','cocinar','KO-jen'],['trinken','beber','TRIN-ken'],['hören','escuchar','HÖ-ren'],['arbeiten','trabajar','AR-bai-ten'],['kommen','venir','KO-men'],['gehen','ir (a pie)','GUEE-en'],['fragen','preguntar','FRA-guen'],['sprechen','hablar','SHPRE-shen'],['essen','comer','E-sen']],
+  quiz:[
+    {q:'du ___ (lernen)', o:['lernst','lernt','lerne','lernen'], a:0, e:'du → -st.'},
+    {q:'er ___ (arbeiten)', o:['arbeitet','arbeitt','arbeit','arbeiten'], a:0, e:'Raíz en -t: se agrega e → arbeitet.'},
+    {q:'wir ___ (spielen)', o:['spielen','spielt','spielst','spiele'], a:0, e:'wir → -en, igual que el infinitivo.'},
+    {q:'ich ___ (kochen)', o:['koche','kochst','kocht','kochen'], a:0, e:'ich → -e.'},
+    {q:'«Estoy aprendiendo alemán»', o:['Ich lerne Deutsch.','Ich bin lernen Deutsch.','Ich lernend Deutsch.','Ich habe lernen Deutsch.'], a:0, e:'El presente simple cubre el «estoy …-ando».'},
+    {q:'er ___ (sprechen)', o:['spricht','sprecht','sprechen','sprichst'], a:0, e:'sprechen cambia e → i con du y er.'},
+  ]},
+
+{ id:'l8', de:'Wo? Wer? Was?', es:'Preguntas y orden de la frase',
+  parts:[
+  {t:'table', h:'Las palabras W', head:['Alemán','Español'], rows:[
+    ['[[wer]]','quién'],['[[was]]','qué'],['[[wo]]','dónde'],['[[woher]]','de dónde'],['[[wohin]]','a dónde'],['[[wie]]','cómo'],['[[wann]]','cuándo'],['[[warum]]','por qué'],['[[wie viel]]','cuánto'],
+  ]},
+  {t:'tip', html:`<b>La regla de oro: el verbo conjugado va en la posición 2.</b> En la posición 1 puede ir el sujeto, una palabra de tiempo o casi cualquier cosa; si no es el sujeto, el sujeto se pasa detrás del verbo. [[Ich lerne heute Deutsch]] → [[Heute lerne ich Deutsch]].`},
+  {t:'p', h:'Tres tipos de frase', html:`<ul>
+    <li><b>Afirmación:</b> verbo en posición 2. [[Ich wohne in Berlin.]]</li>
+    <li><b>Pregunta con W:</b> palabra W + verbo + sujeto. [[Wo wohnst du?]]</li>
+    <li><b>Pregunta de sí o no:</b> el verbo va primero. [[Wohnst du in Berlin?]]</li></ul>`},
+  {t:'widget', h:'Ordena la frase', w:'order'},
+  ],
+  vocab:[['wer','quién','VEER'],['was','qué','VAS'],['wo','dónde','VOO'],['woher','de dónde','vo-HEER'],['wohin','a dónde','vo-HIN'],['wie','cómo','VII'],['wann','cuándo','VAN'],['warum','por qué','va-RUM'],['wie viel','cuánto','vi FIIL'],['heute','hoy','HOI-te'],['morgen','mañana','MOR-guen'],['hier','aquí','HIIR'],['zu Hause','en casa','tsu HAU-ze']],
+  quiz:[
+    {q:'«¿Dónde vives?»', o:['Wo wohnst du?','Wohin wohnst du?','Wo du wohnst?','Wer wohnst du?'], a:0, e:'W + verbo + sujeto.'},
+    {q:'¿Cuál es correcta?', o:['Heute lerne ich Deutsch.','Heute ich lerne Deutsch.','Heute Deutsch ich lerne.','Lerne heute ich Deutsch.'], a:0, e:'El verbo va en posición 2; el sujeto pasa detrás.'},
+    {q:'«¿Trabajas hoy?»', o:['Arbeitest du heute?','Du arbeitest heute?','Heute du arbeitest?','Arbeitest heute du?'], a:0, e:'Pregunta de sí o no: verbo primero.'},
+    {q:'«wohin» significa…', o:['a dónde','de dónde','dónde','cuándo'], a:0, e:'wo = dónde, woher = de dónde, wohin = a dónde.'},
+    {q:'«warum» significa…', o:['por qué','cuánto','quién','cómo'], a:0, e:'Warum? — Darum! (¿Por qué? — ¡Porque sí!)'},
+    {q:'«Wann kommst du?»', o:['¿Cuándo vienes?','¿De dónde vienes?','¿Cómo vienes?','¿Quién viene?'], a:0, e:'wann = cuándo.'},
+  ]},
+
+{ id:'l9', de:'Die Familie', es:'La familia',
+  parts:[
+  {t:'p', h:'Mi, tu…', html:`Los posesivos se comportan como ein: sin -e para der y das, con -e para die y el plural.`},
+  {t:'table', head:['','der / das','die / plural'], rows:[
+    ['mi','[[mein Vater]], [[mein Kind]]','[[meine Mutter]], [[meine Eltern]]'],
+    ['tu','[[dein Bruder]]','[[deine Schwester]]'],
+    ['su (de él)','[[sein Sohn]]','[[seine Tochter]]'],
+    ['su (de ella)','[[ihr Mann]]','[[ihre Familie]]'],
+  ]},
+  {t:'p', h:'Tu primer caso: el acusativo', html:`Cuando algo es el objeto del verbo (lo que tienes, compras, ves), <b>solo el masculino cambia</b>: der → <b>den</b>, ein → <b>einen</b>, mein → <b>meinen</b>. Femenino, neutro y plural se quedan igual.<br>[[Ich habe einen Bruder]] · [[Ich habe eine Schwester]] · [[Ich habe ein Kind]].`},
+  {t:'tip', html:`Cuidado con <b>Freund</b>: [[mein Freund]] casi siempre significa «mi novio» y [[meine Freundin]], «mi novia». Para un amigo cualquiera se dice [[ein Freund von mir]].`},
+  {t:'dialog', lines:[
+    ['Anna','Hast du Geschwister?','¿Tienes hermanos?'],
+    ['Diego','Ja, ich habe einen Bruder und zwei Schwestern.','Sí, tengo un hermano y dos hermanas.'],
+    ['Anna','Wie heißt dein Bruder?','¿Cómo se llama tu hermano?'],
+    ['Diego','Er heißt Pablo. Er ist neunzehn Jahre alt.','Se llama Pablo. Tiene diecinueve años.'],
+    ['Anna','Und wo wohnen deine Eltern?','¿Y dónde viven tus papás?'],
+    ['Diego','Sie wohnen in Puebla.','Viven en Puebla.'],
+  ]},
+  ],
+  vocab:[['Familie','familia','fa-MII-li-e','f'],['Mutter','madre','MU-ta','f'],['Vater','padre','FA-ta','m'],['Eltern','padres','EL-tern','p'],['Bruder','hermano','BRU-da','m'],['Schwester','hermana','SHVES-ta','f'],['Geschwister','hermanos (y hermanas)','gue-SHVIS-ta','p'],['Sohn','hijo','ZOON','m'],['Tochter','hija','TOJ-ta','f'],['Kind','niño, hijo/a','KINT','n'],['Oma','abuela','O-ma','f'],['Opa','abuelo','O-pa','m'],['Onkel','tío','ON-kel','m'],['Tante','tía','TAN-te','f'],['Mann','esposo; hombre','MAN','m'],['Frau','esposa; mujer','FRAU','f'],['Freund','amigo; novio','FROINT','m'],['Freundin','amiga; novia','FROIN-din','f']],
+  quiz:[
+    {q:'«Tengo un hermano»', o:['Ich habe einen Bruder.','Ich habe ein Bruder.','Ich habe eine Bruder.','Ich bin einen Bruder.'], a:0, e:'Bruder es masculino y es objeto: ein → einen.'},
+    {q:'«mi madre»', o:['meine Mutter','mein Mutter','meinen Mutter','meiner Mutter'], a:0, e:'die Mutter → meine.'},
+    {q:'«Geschwister» significa…', o:['hermanos (y hermanas)','primos','abuelos','sobrinos'], a:0, e:'Es la palabra para todos los hermanos juntos.'},
+    {q:'«mein Freund» normalmente significa…', o:['mi novio','un amigo mío','mi primo','mi compañero de trabajo'], a:0, e:'Para un amigo: ein Freund von mir.'},
+    {q:'Ich habe ___ Sohn.', o:['einen','ein','eine','einer'], a:0, e:'der Sohn → einen en acusativo.'},
+    {q:'«die Tochter» es…', o:['la hija','la tía','la hermana','la madre'], a:0, e:'der Sohn / die Tochter = el hijo / la hija.'},
+  ]},
+
+{ id:'l10', de:'Im Café', es:'Pedir y pagar',
+  parts:[
+  {t:'dialog', h:'En una cafetería', lines:[
+    ['Mesero','Hallo! Was möchten Sie?','¡Hola! ¿Qué desea?'],
+    ['Tú','Ich hätte gern einen Kaffee mit Milch, bitte.','Me gustaría un café con leche, por favor.'],
+    ['Mesero','Gern. Sonst noch etwas?','Con gusto. ¿Algo más?'],
+    ['Tú','Ja, ein Stück Kuchen, bitte.','Sí, una rebanada de pastel, por favor.'],
+    ['Tú','Die Rechnung, bitte!','¡La cuenta, por favor!'],
+    ['Mesero','Zusammen oder getrennt?','¿Junto o por separado?'],
+    ['Tú','Zusammen.','Junto.'],
+    ['Mesero','Das macht sieben Euro achtzig.','Son siete euros con ochenta.'],
+    ['Tú','Acht Euro. Stimmt so.','Ocho euros. Quédese con el cambio.'],
+  ]},
+  {t:'p', h:'Pedir con el acusativo', html:`Lo que pides es el objeto, así que el masculino cambia: [[einen Kaffee]] (der Kaffee), [[eine Cola]] (die Cola), [[ein Wasser]] (das Wasser). [[Ich hätte gern]] es la forma más educada; [[Ich möchte]] también está bien.`},
+  {t:'tip', html:`La propina en Alemania suele ser de 5 a 10 %, y no se deja en la mesa: al pagar le dices al mesero el total que quieres dar. Si la cuenta es 7,80 € y dices «Acht Euro», ya incluiste la propina. [[Stimmt so]] significa «así está bien, quédese el cambio».`},
+  ],
+  vocab:[['Kaffee','café','KA-fe','m'],['Tee','té','TEE','m'],['Wasser','agua','VA-ser','n'],['Saft','jugo','ZAFT','m'],['Bier','cerveza','BIIR','n'],['Milch','leche','MILSH','f'],['Zucker','azúcar','TSU-ka','m'],['Kuchen','pastel','KU-jen','m'],['Brötchen','pancito, bolillo','BRÖT-shen','n'],['Speisekarte','menú, carta','SHPAI-ze-kar-te','f'],['Rechnung','cuenta','RESH-nung','f'],['Ich hätte gern …','me gustaría …','ish HE-te GUERN'],['Was kostet das?','¿cuánto cuesta?','vas KOS-tet das'],['Sonst noch etwas?','¿algo más?','zonst noj ET-vas'],['Stimmt so.','quédese el cambio','SHTIMT zo'],['lecker','delicioso','LE-ka']],
+  quiz:[
+    {q:'Pide un té de forma educada:', o:['Ich hätte gern einen Tee.','Ich habe einen Tee.','Gib mir Tee.','Ich bin einen Tee.'], a:0, e:'Ich hätte gern … = me gustaría …'},
+    {q:'«Die Rechnung, bitte!»', o:['¡La cuenta, por favor!','¡El menú, por favor!','¡Otra ronda, por favor!','¡La mesa, por favor!'], a:0, e:'die Rechnung = la cuenta.'},
+    {q:'«Zusammen oder getrennt?» pregunta…', o:['si pagan junto o por separado','si quieres azúcar','si comes aquí o para llevar','si quieres más'], a:0, e:'Es muy común en Alemania pagar cada quien lo suyo.'},
+    {q:'«Saft» es masculino. ¿Cuál es correcto?', o:['Ich möchte einen Saft.','Ich möchte ein Saft.','Ich möchte eine Saft.','Ich möchte der Saft.'], a:0, e:'Masculino como objeto: einen.'},
+    {q:'«Stimmt so» significa…', o:['quédese con el cambio','está mal la cuenta','es todo','muy rico'], a:0, e:'Así le dejas la diferencia de propina.'},
+    {q:'«lecker» significa…', o:['delicioso','caro','frío','rápido'], a:0, e:'Das ist lecker! = ¡Está delicioso!'},
+  ]},
+
+{ id:'l11', de:'Wie spät ist es?', es:'Días, meses y la hora',
+  parts:[
+  {t:'table', h:'Los días (todos son der)', head:['Alemán','Español'], rows:[
+    ['[[Montag]]','lunes'],['[[Dienstag]]','martes'],['[[Mittwoch]]','miércoles'],['[[Donnerstag]]','jueves'],['[[Freitag]]','viernes'],['[[Samstag]]','sábado'],['[[Sonntag]]','domingo'],
+  ]},
+  {t:'p', h:'Los meses (también der)', html:`[[Januar]], [[Februar]], [[März]], [[April]], [[Mai]], [[Juni]], [[Juli]], [[August]], [[September]], [[Oktober]], [[November]], [[Dezember]].`},
+  {t:'p', h:'am, im, um', html:`<ul><li><b>am</b> + día: [[am Montag]] (el lunes)</li><li><b>im</b> + mes o estación: [[im Juli]], [[im Sommer]]</li><li><b>um</b> + hora: [[um acht Uhr]] (a las ocho)</li></ul>`},
+  {t:'p', h:'La hora', html:`Se pregunta [[Wie spät ist es?]] o [[Wie viel Uhr ist es?]]. En horarios de trenes, oficinas y la tele se usa el reloj de 24 horas: 15:30 es [[fünfzehn Uhr dreißig]]. En la conversación se usa la forma coloquial:`},
+  {t:'table', head:['Hora','Coloquial'], rows:[
+    ['3:00','[[drei Uhr]]'],['3:10','[[zehn nach drei]]'],['3:15','[[Viertel nach drei]]'],['3:30','[[halb vier]]'],['3:45','[[Viertel vor vier]]'],['3:50','[[zehn vor vier]]'],
+  ]},
+  {t:'tip', html:`La trampa más famosa: [[halb vier]] es <b>3:30</b>, no 4:30. Se piensa como «media hora hacia las cuatro». Muchos hispanohablantes llegan una hora tarde por esto.`},
+  {t:'widget', h:'¿Qué hora es?', w:'clock'},
+  ],
+  vocab:[['Montag','lunes','MOON-taak','m'],['Dienstag','martes','DIINS-taak','m'],['Mittwoch','miércoles','MIT-voj','m'],['Donnerstag','jueves','DO-ners-taak','m'],['Freitag','viernes','FRAI-taak','m'],['Samstag','sábado','ZAMS-taak','m'],['Sonntag','domingo','ZON-taak','m'],['Wochenende','fin de semana','VO-jen-en-de','n'],['gestern','ayer','GUES-tern'],['Uhr','hora; reloj','UUR','f'],['Stunde','hora (duración)','SHTUN-de','f'],['Minute','minuto','mi-NU-te','f'],['Woche','semana','VO-je','f'],['Monat','mes','MOO-nat','m'],['Jahr','año','YAAR','n']],
+  quiz:[
+    {q:'«halb acht» es…', o:['7:30','8:30','8:00','7:50'], a:0, e:'Media hora hacia las ocho = 7:30.'},
+    {q:'4:15 en forma coloquial:', o:['Viertel nach vier','Viertel vor vier','halb vier','Viertel nach fünf'], a:0, e:'nach = después de.'},
+    {q:'«el lunes»', o:['am Montag','im Montag','um Montag','der Montag'], a:0, e:'am + día.'},
+    {q:'«en julio»', o:['im Juli','am Juli','um Juli','in Juli'], a:0, e:'im + mes.'},
+    {q:'9:45 en forma coloquial:', o:['Viertel vor zehn','Viertel nach neun','halb zehn','Viertel vor neun'], a:0, e:'vor = antes de: un cuarto para las diez.'},
+    {q:'«Wochenende» significa…', o:['fin de semana','miércoles','cada semana','mitad de semana'], a:0, e:'die Woche (semana) + das Ende (fin) = das Wochenende.'},
+  ]},
+
+{ id:'l12', de:'Nein, nicht, kein', es:'Decir que no',
+  parts:[
+  {t:'p', h:'kein: no + un sustantivo', html:`<b>kein</b> niega un sustantivo que llevaría <i>ein</i> o que no lleva artículo. Funciona como «ningún/ninguna» y toma las mismas terminaciones que ein.`},
+  {t:'table', head:['Afirmación','Negación'], rows:[
+    ['[[Ich habe ein Auto.]]','[[Ich habe kein Auto.]]'],
+    ['[[Ich habe Zeit.]]','[[Ich habe keine Zeit.]]'],
+    ['[[Ich habe einen Bruder.]]','[[Ich habe keinen Bruder.]]'],
+    ['[[Ich trinke Kaffee.]]','[[Ich trinke keinen Kaffee.]]'],
+  ]},
+  {t:'p', h:'nicht: no para todo lo demás', html:`<b>nicht</b> niega verbos, adjetivos y sustantivos con der/die/das o con posesivo.<ul><li>[[Ich arbeite heute nicht.]] (no trabajo hoy)</li><li>[[Das ist nicht teuer.]] (no es caro)</li><li>[[Das ist nicht mein Handy.]] (no es mi celular)</li></ul>`},
+  {t:'tip', html:`Para contestar «sí» a una pregunta negativa se usa [[doch]]. «Hast du keinen Hunger?» (¿No tienes hambre?) — [[Doch!]] (¡Sí, sí tengo!). Responder «Ja» ahí suena raro.`},
+  {t:'p', h:'¿Y después?', html:`Con estas doce lecciones tienes la base del nivel A1. Repasa el vocabulario en la sección <a href="#repaso">Repaso</a> y entrena los artículos en <a href="#genero">der · die · das</a> unos minutos al día.`},
+  ],
+  vocab:[['nicht','no','NISHT'],['kein','ningún, no un','KAIN'],['doch','¡sí! (contra un «no»)','DOJ'],['teuer','caro','TOI-a'],['billig','barato','BI-lish'],['gut','bueno','GUUT'],['schlecht','malo','SHLESHT'],['groß','grande','GROOS'],['klein','pequeño','KLAIN'],['viel','mucho','FIIL'],['Handy','celular','HEN-di','n']],
+  quiz:[
+    {q:'«No tengo tiempo»', o:['Ich habe keine Zeit.','Ich habe nicht Zeit.','Ich habe kein Zeit.','Ich nicht habe Zeit.'], a:0, e:'Zeit es femenino y sin artículo: keine.'},
+    {q:'«No trabajo hoy»', o:['Ich arbeite heute nicht.','Ich arbeite kein heute.','Ich nicht arbeite heute.','Ich kein arbeite heute.'], a:0, e:'Se niega el verbo: nicht, al final.'},
+    {q:'«No tengo hermano»', o:['Ich habe keinen Bruder.','Ich habe kein Bruder.','Ich habe nicht Bruder.','Ich habe nicht einen Bruder.'], a:0, e:'Masculino acusativo: keinen.'},
+    {q:'Das ist ___ gut.', o:['nicht','kein','keine','keinen'], a:0, e:'Los adjetivos se niegan con nicht.'},
+    {q:'«Kommst du nicht?» y sí vas a ir. Respondes…', o:['Doch!','Ja!','Nein!','Kein!'], a:0, e:'doch contradice una pregunta negativa.'},
+    {q:'«No bebo café»', o:['Ich trinke keinen Kaffee.','Ich trinke nicht Kaffee.','Ich trinke kein Kaffee.','Ich nicht trinke Kaffee.'], a:0, e:'der Kaffee → keinen en acusativo.'},
+  ]},
+];
+
+const EXTRA_NOUNS = [['Banane','plátano','f'],['Uhr','reloj','f'],['Schlüssel','llave','m'],['Brille','lentes','f'],['Fahrrad','bicicleta','n'],['Zug','tren','m'],['Stadt','ciudad','f'],['Land','país','n'],['Baum','árbol','m'],['Blume','flor','f'],['Bett','cama','n'],['Kühlschrank','refrigerador','m'],['Küche','cocina','f'],['Zimmer','cuarto','n'],['Garten','jardín','m'],['Wohnung','departamento','f'],['Freiheit','libertad','f'],['Information','información','f'],['Museum','museo','n'],['Essen','comida','n'],['Sommer','verano','m'],['Winter','invierno','m'],['Tourismus','turismo','m'],['Universität','universidad','f'],['Freundschaft','amistad','f'],['Löffel','cuchara','m'],['Gabel','tenedor','f'],['Messer','cuchillo','n'],['Mond','luna','m'],['Computer','computadora','m'],['Flasche','botella','f'],['Glas','vaso','n'],['Teller','plato','m'],['Geld','dinero','n'],['Arbeit','trabajo','f'],['Frage','pregunta','f'],['Antwort','respuesta','f'],['Wort','palabra','n'],['Sprache','idioma','f'],['Hand','mano','f'],['Kopf','cabeza','m'],['Auge','ojo','n'],['Bild','imagen','n'],['Fisch','pescado','m'],['Käse','queso','m'],['Ei','huevo','n'],['Brot','pan','n'],['Wetter','clima','n'],['Regen','lluvia','m'],['Meer','mar','n'],['Berg','montaña','m'],['Woche','semana','f'],['Bahnhof','estación de tren','m'],['Kirche','iglesia','f'],['Frühling','primavera','m'],['Häuschen','casita','n'],['Zeitung','periódico','f']];
+
+const ORDER_ITEMS = [
+  {es:'Vivo en Berlín.', tok:['ich','wohne','in','Berlin'], ok:['ich wohne in berlin','in berlin wohne ich']},
+  {es:'Hoy aprendo alemán.', tok:['heute','lerne','ich','Deutsch'], ok:['heute lerne ich deutsch','ich lerne heute deutsch','deutsch lerne ich heute']},
+  {es:'¿De dónde eres?', tok:['woher','kommst','du'], ok:['woher kommst du']},
+  {es:'¿Hablas alemán?', tok:['sprichst','du','Deutsch'], ok:['sprichst du deutsch']},
+  {es:'Mañana trabajo en casa.', tok:['morgen','arbeite','ich','zu Hause'], ok:['morgen arbeite ich zu hause','ich arbeite morgen zu hause','zu hause arbeite ich morgen']},
+  {es:'¿Qué bebes?', tok:['was','trinkst','du'], ok:['was trinkst du']},
+  {es:'¿Cómo se llama tu hermano?', tok:['wie','heißt','dein','Bruder'], ok:['wie heißt dein bruder']},
+  {es:'El lunes juego futbol.', tok:['am Montag','spiele','ich','Fußball'], ok:['am montag spiele ich fußball','ich spiele am montag fußball']},
+];
+
+const VERBS = [['wohnen','vivir'],['lernen','aprender'],['spielen','jugar'],['kaufen','comprar'],['machen','hacer'],['kochen','cocinar'],['trinken','beber'],['hören','escuchar'],['arbeiten','trabajar'],['kommen','venir'],['gehen','ir'],['fragen','preguntar'],['finden','encontrar'],['sagen','decir'],['schreiben','escribir'],['reisen','viajar']];
+
+/* ============ ESTADO ============ */
+const KEY='deutsch-desde-cero-v1';
+let S = {done:[], best:{}, box:{}, slow:false};
+try{ const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S, JSON.parse(raw)); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+/* ============ VOZ ============ */
+let deVoice=null; const hasTTS = 'speechSynthesis' in window;
+function loadVoices(){ try{ const v=speechSynthesis.getVoices(); deVoice=v.find(x=>x.lang==='de-DE')||v.find(x=>(x.lang||'').toLowerCase().startsWith('de'))||null; }catch(e){} }
+if(hasTTS){ loadVoices(); try{ speechSynthesis.onvoiceschanged=loadVoices; }catch(e){} }
+else document.getElementById('notice').hidden=false;
+let lastEl=null;
+function speak(text, el){
+  if(!hasTTS) return;
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text.replace(/…/g,''));
+    u.lang='de-DE'; if(deVoice) u.voice=deVoice; u.rate=S.slow?0.6:0.92;
+    if(lastEl) lastEl.classList.remove('on');
+    if(el){ el.classList.add('on'); lastEl=el; u.onend=()=>el.classList.remove('on'); setTimeout(()=>el.classList.remove('on'),4000); }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+/* ============ HELPERS ============ */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ART={m:'der',f:'die',n:'das',p:'die'};
+const ICON='<svg class="spk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+function fmt(s){ return s.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,(_,a,b)=>`<button type="button" class="say" data-say="${esc(b||a)}">${a}</button>`); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function sayText(v){ return v[3]?ART[v[3]]+' '+v[0]:v[0]; }
+function deHTML(v){ return v[3]?`<span class="g-${v[3]}">${ART[v[3]]}</span> ${esc(v[0])}${v[3]==='p'?' <small>(pl.)</small>':''}`:esc(v[0]); }
+const norm=s=>s.toLowerCase().replace(/[.,!?¿¡]/g,'').replace(/\s+/g,' ').trim();
+
+/* ============ NÚMEROS ============ */
+const ONES=['null','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'];
+const TENS=['','','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig'];
+function u100(n){ if(n<20) return ONES[n]; const t=Math.floor(n/10),u=n%10; if(!u) return TENS[t]; return (u===1?'ein':ONES[u])+'und'+TENS[t]; }
+function u1000(n){ const h=Math.floor(n/100),r=n%100; let s=''; if(h) s=(h===1?'ein':ONES[h])+'hundert'; if(r||!h) s+=u100(r); return s; }
+function num(n){ if(n<1000) return u1000(n); const th=Math.floor(n/1000),r=n%1000; return (th===1?'ein':u1000(th))+'tausend'+(r?u1000(r):''); }
+
+/* ============ HORA ============ */
+const HN=['zwölf','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf'];
+const nx=h=>h%12+1;
+function tg(h,m){ if(m===0) return (h===1?'ein':HN[h])+' Uhr'; if(m===15) return 'Viertel nach '+HN[h]; if(m===30) return 'halb '+HN[nx(h)]; return 'Viertel vor '+HN[nx(h)]; }
+
+/* ============ VISTAS ============ */
+const app=$('#app');
+function setNav(k){ document.querySelectorAll('[data-nav]').forEach(a=>{ if(a.dataset.nav===k) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); }); }
+const nextIdx=()=>{ const i=L.findIndex(l=>!S.done.includes(l.id)); return i<0?L.length-1:i; };
+
+function home(){
+  setNav('inicio');
+  const n=S.done.length, ni=nextIdx(), started=n>0;
+  app.innerHTML=`
+  <section class="hero">
+    <div><h1><span class="ger">Deutsch</span><small>desde cero, en español</small></h1></div>
+    <div>
+      <p>Doce lecciones de nivel A1 pensadas para hispanohablantes: pronunciación, saludos, números, los famosos der/die/das y tus primeras conversaciones.</p>
+      <div class="first">${['Hallo!','Danke!','Tschüss!','Guten Tag!'].map(w=>`<button type="button" class="say" data-say="${w}">${w}</button>`).join('')}</div>
+      <a class="cta" href="#${L[ni].id}">${n===L.length?'Repasar la última lección':started?'Continuar: lección '+(ni+1):'Empezar: lección 1'} →</a>
+      <div class="meter"><span>${n} de ${L.length} completadas</span><span class="bar"><i style="width:${n/L.length*100}%"></i></span></div>
+    </div>
+  </section>
+  <div class="legend" aria-label="Colores de los artículos">
+    <div class="leg m"><b class="g-m">der</b><span>masculino · azul</span></div>
+    <div class="leg f"><b class="g-f">die</b><span>femenino · rojo</span></div>
+    <div class="leg n"><b class="g-n">das</b><span>neutro · verde</span></div>
+  </div>
+  <h2 class="sect-h">Tu ruta</h2>
+  <div class="route">${L.map((l,i)=>{ const d=S.done.includes(l.id); return `<a href="#${l.id}"><span class="rn">${String(i+1).padStart(2,'0')}</span><span><span class="rt">${l.de}</span><span class="rs">${l.es}</span></span>${d?'<span class="chip done">Completada</span>':i===ni?'<span class="chip next">Siguiente</span>':`<span class="chip">${S.best[l.id]!=null?'Práctica '+S.best[l.id]+'/'+l.quiz.length:'Pendiente'}</span>`}</a>`; }).join('')}</div>
+  <h2 class="sect-h">Cada lección tiene</h2>
+  <div class="after">
+    <div><h3>Explicación y audio</h3><p>Toca cualquier palabra resaltada para escucharla. Si va muy rápido, activa «Voz lenta» arriba.</p></div>
+    <div><h3>Práctica al final</h3><p>Seis preguntas. Con 5 aciertos la lección queda completada y su vocabulario entra a tu repaso.</p></div>
+    <div><h3>Pronunciación</h3><p>Entrena el oído con pares como <i>schon / schön</i>, repite frases en voz alta y suelta la boca con trabalenguas. <a href="#aussprache">Ir a Pronunciación</a></p></div>
+    <div><h3>Repaso con tarjetas</h3><p>Las palabras que fallas vuelven más seguido; las que dominas, menos.</p></div>
+    <div><h3>Cuando termines el A1</h3><p>El curso gratuito «Nicos Weg» de <a href="https://learngerman.dw.com/es" target="_blank" rel="noopener">Deutsche Welle</a> sigue hasta B1, y el <a href="https://www.goethe.de/" target="_blank" rel="noopener">Goethe-Institut</a> ofrece el examen oficial A1.</p></div>
+  </div>
+  <h2 class="sect-h" id="respaldo">Respaldo de tu progreso</h2>
+  <div class="backup">
+    <p>Tu avance se guarda solo en este navegador. Copia el código para respaldarlo o para pasarlo a otro dispositivo o a la versión app, y pégalo allá en «Restaurar».</p>
+    <div class="row left"><button type="button" class="btn" id="bk-copy">Copiar mi progreso</button><span class="fb" id="bk-msg"></span></div>
+    <textarea id="bk-out" rows="3" readonly hidden aria-label="Tu código de progreso"></textarea>
+    <label class="lab" for="bk-in">Restaurar desde un código</label>
+    <textarea id="bk-in" rows="3" placeholder="Pega aquí tu código (empieza con DDC1:)" autocomplete="off" spellcheck="false"></textarea>
+    <div class="row left"><button type="button" class="btn ghost" id="bk-load">Restaurar progreso</button><span class="fb" id="bk-err"></span></div>
+    <div class="confirm" id="bk-confirm" hidden></div>
+  </div>`;
+  wireBackup();
+}
+
+function exportCode(){ const data={done:S.done,best:S.best,box:S.box,gbest:S.gbest||0,slow:S.slow}; return 'DDC1:'+btoa(unescape(encodeURIComponent(JSON.stringify(data)))); }
+function parseCode(c){ c=(c||'').trim().replace(/\s+/g,''); if(!c.startsWith('DDC1:')) return null;
+  try{ const o=JSON.parse(decodeURIComponent(escape(atob(c.slice(5))))); if(!o||!Array.isArray(o.done)) return null;
+    return {done:o.done.filter(id=>L.some(l=>l.id===id)), best:o.best&&typeof o.best==='object'?o.best:{}, box:o.box&&typeof o.box==='object'?o.box:{}, gbest:+o.gbest||0, slow:!!o.slow}; }catch(e){ return null; } }
+function wireBackup(){
+  const msg=$('#bk-msg'), out=$('#bk-out'), err=$('#bk-err'), cf=$('#bk-confirm');
+  $('#bk-copy').onclick=()=>{ const code=exportCode(); out.value=code;
+    const fallback=()=>{ out.hidden=false; out.focus(); out.select(); msg.innerHTML='Selecciona el código de abajo y cópialo.'; };
+    try{ navigator.clipboard.writeText(code).then(()=>{ out.hidden=false; msg.innerHTML='<span class="ok">✓ Copiado.</span> Guárdalo en Notas para tenerlo a la mano.'; },fallback); }catch(e){ fallback(); } };
+  $('#bk-load').onclick=()=>{ err.textContent=''; const d=parseCode($('#bk-in').value);
+    if(!d){ err.innerHTML='<span class="no">Ese código no es válido.</span> Revisa que lo hayas copiado completo, desde «DDC1:».'; cf.hidden=true; return; }
+    cf.hidden=false;
+    cf.innerHTML=`<span>Esto reemplaza tu progreso actual (${S.done.length} lecciones completadas) por el del código (${d.done.length} lecciones completadas, ${Object.keys(d.box).length} tarjetas repasadas).</span><span class="row left"><button type="button" class="btn" id="bk-yes">Reemplazar</button><button type="button" class="btn ghost" id="bk-no">Cancelar</button></span>`;
+    $('#bk-no').onclick=()=>{ cf.hidden=true; };
+    $('#bk-yes').onclick=()=>{ Object.assign(S,d); save(); slowBtn.setAttribute('aria-pressed',S.slow); home();
+      $('#bk-msg').innerHTML=`<span class="ok">✓ Progreso restaurado:</span> ${S.done.length} lecciones completadas.`; $('#respaldo').scrollIntoView({block:'start'}); };
+  };
+}
+
+function lesson(i){
+  setNav('inicio');
+  const l=L[i];
+  const parts=l.parts.map((p,k)=>{
+    const h=p.h?`<h3>${p.h}</h3>`:'';
+    if(p.t==='p') return `<section class="part">${h}<p>${fmt(p.html)}</p></section>`;
+    if(p.t==='tip') return `<aside class="tip"><span class="lab">Tip para hispanohablantes</span><p>${fmt(p.html)}</p></aside>`;
+    if(p.t==='table') return `<section class="part">${h}<div class="tbl"><table><thead><tr>${p.head.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${p.rows.map(r=>`<tr>${r.map(c=>`<td>${fmt(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>`;
+    if(p.t==='dialog') return `<section class="part">${h}<div class="dialog">${p.lines.map(x=>`<div class="dl"><span class="who">${x[0]}</span><span><button type="button" class="say" data-say="${esc(x[1])}">${x[1]}</button><span class="es">${x[2]}</span></span></div>`).join('')}</div></section>`;
+    if(p.t==='widget') return `<section class="part">${h}<div class="widget" data-w="${p.w}"></div></section>`;
+    return '';
+  }).join('');
+  app.innerHTML=`<div class="lay">
+    <nav class="rail" aria-label="Lecciones">${L.map((x,j)=>`<a href="#${x.id}" ${j===i?'aria-current="page"':''}><span class="n">${String(j+1).padStart(2,'0')}</span><span>${x.de}</span><span class="d ${S.done.includes(x.id)?'done':''}"></span></a>`).join('')}</nav>
+    <article class="lesson">
+      <header class="lh"><span class="lab">Lección ${i+1} de ${L.length} · A1</span><h1>${l.de}</h1><h2>${l.es}</h2></header>
+      ${parts}
+      <section class="part"><h3>Vocabulario</h3><div class="vocab">${l.vocab.map(v=>`<button type="button" class="vcard" data-say="${esc(sayText(v))}"><span class="vde">${deHTML(v)}</span>${ICON}<span class="ves">${v[1]}</span><span class="vp">${v[2]}</span></button>`).join('')}</div></section>
+      <section class="part"><h3>Práctica</h3><div class="quiz" id="quiz"></div></section>
+      <nav class="pager">${i>0?`<a href="#${L[i-1].id}"><span>← Anterior</span><b>${L[i-1].de}</b></a>`:`<a href="#inicio"><span>← Volver</span><b>Índice</b></a>`}${i<L.length-1?`<a class="nx" href="#${L[i+1].id}"><span>Siguiente →</span><b>${L[i+1].de}</b></a>`:`<a class="nx" href="#repaso"><span>Siguiente →</span><b>Repaso</b></a>`}</nav>
+    </article></div>`;
+  quiz(l, i, $('#quiz'));
+  app.querySelectorAll('[data-w]').forEach(el=>({numbers:wNumbers,clock:wClock,conj:wConj,order:wOrder})[el.dataset.w](el));
+}
+
+function quiz(l, i, host){
+  const qs=l.quiz.map(q=>({...q, opts:shuffle(q.o.map((t,k)=>({t,ok:k===q.a})))}));
+  let answered=0, right=0; const need=Math.ceil(qs.length*0.8);
+  host.innerHTML=qs.map((q,k)=>`<fieldset class="q" data-k="${k}"><legend><span class="qn">${k+1}/${qs.length}</span>${fmt(q.q)}</legend><div class="opts">${q.opts.map((o,j)=>`<button type="button" class="opt" data-j="${j}">${esc(o.t)}</button>`).join('')}</div><p class="qfb" hidden></p></fieldset>`).join('')+`<div class="qresult" hidden></div>`;
+  host.onclick=e=>{
+    const b=e.target.closest('.opt'); if(!b||b.disabled) return;
+    const fs=b.closest('.q'), q=qs[+fs.dataset.k], o=q.opts[+b.dataset.j];
+    fs.querySelectorAll('.opt').forEach((x,j)=>{ x.disabled=true; if(q.opts[j].ok) x.classList.add('right'); });
+    if(!o.ok) b.classList.add('wrong'); else right++;
+    answered++;
+    const fb=fs.querySelector('.qfb'); fb.hidden=false; fb.innerHTML=`<b class="${o.ok?'ok':'no'}">${o.ok?'✓ Correcto.':'✗ No exactamente.'}</b> ${esc(q.e)}`;
+    if(answered===qs.length){
+      S.best[l.id]=Math.max(S.best[l.id]||0,right);
+      const pass=right>=need; if(pass&&!S.done.includes(l.id)) S.done.push(l.id); save();
+      const r=host.querySelector('.qresult'); r.hidden=false;
+      r.innerHTML=`<strong>${right}/${qs.length}</strong><span>${pass?'¡Lección completada! Sus palabras ya están en tu repaso.':'Necesitas '+need+' aciertos para completarla. Vuelve a intentarlo.'}</span><span style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn ghost" data-retry style="color:var(--paper);border-color:var(--muted)">Repetir</button>${pass&&i<L.length-1?`<a class="btn" href="#${L[i+1].id}">Siguiente lección →</a>`:''}</span>`;
+      r.querySelector('[data-retry]').onclick=()=>{ quiz(l,i,host); host.scrollIntoView({block:'start',behavior:'smooth'}); };
+      document.querySelectorAll('.rail a')[i]?.querySelector('.d')?.classList.toggle('done',S.done.includes(l.id));
+    }
+  };
+}
+
+/* ---- widget: números ---- */
+function wNumbers(el){
+  let mode='read', max=100, cur=47;
+  el.innerHTML=`<div class="wbar"><span class="lab">Números</span><div class="seg" role="group" aria-label="Modo"><button type="button" data-m="read" aria-pressed="true">Leer</button><button type="button" data-m="listen" aria-pressed="false">Escuchar</button></div><label class="sel" for="num-range">Rango <select id="num-range"><option value="20">0–20</option><option value="100" selected>0–100</option><option value="1000">0–1000</option><option value="9999">0–9999</option></select></label></div><div class="wbody"></div>`;
+  const body=el.querySelector('.wbody');
+  const rnd=()=>{ let n; do{ n=Math.floor(Math.random()*(max+1)); }while(n===cur&&max>0); cur=n; };
+  function draw(){
+    if(mode==='read'){
+      body.innerHTML=`<div class="bignum">${cur.toLocaleString('de-DE')}</div><div class="numword" hidden></div><div class="row"><button type="button" class="btn hl" data-a="show">Ver en alemán</button><button type="button" class="btn ghost" data-a="next">Otro número</button></div>`;
+    } else {
+      body.innerHTML=`<button type="button" class="btn hl" data-a="play">${ICON} Escuchar número</button><div class="row"><label for="num-in" class="sel">¿Qué número es?</label><input type="number" id="num-in" inputmode="numeric" style="width:120px" placeholder="0"><button type="button" class="btn" data-a="check">Comprobar</button></div><div class="fb"></div><button type="button" class="btn ghost" data-a="next">Otro número</button>`;
+    }
+  }
+  el.addEventListener('click',e=>{
+    const m=e.target.closest('[data-m]'); if(m){ mode=m.dataset.m; el.querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',x===m)); draw(); return; }
+    const a=e.target.closest('[data-a]'); if(!a) return;
+    const act=a.dataset.a;
+    if(act==='show'){ const w=body.querySelector('.numword'); w.hidden=false; w.innerHTML=`<button type="button" class="say" data-say="${num(cur)}">${num(cur)}</button>`; speak(num(cur)); }
+    if(act==='next'){ rnd(); draw(); if(mode==='listen') speak(num(cur)); }
+    if(act==='play') speak(num(cur));
+    if(act==='check'){ const v=parseInt(body.querySelector('#num-in').value,10); const fb=body.querySelector('.fb'); fb.innerHTML=v===cur?`<span class="ok">✓ ¡Exacto!</span> ${cur} = ${num(cur)}`:`<span class="no">✗ Era ${cur}.</span> ${num(cur)}`; }
+  });
+  el.addEventListener('keydown',e=>{ if(e.key==='Enter'&&e.target.id==='num-in') el.querySelector('[data-a="check"]').click(); });
+  el.querySelector('#num-range').onchange=e=>{ max=+e.target.value; rnd(); draw(); };
+  draw();
+}
+
+/* ---- widget: reloj ---- */
+function wClock(el){
+  let h=3, m=30;
+  el.innerHTML=`<div class="wbar"><span class="lab">Lee el reloj</span></div><div class="wbody"></div>`;
+  const body=el.querySelector('.wbody');
+  function svg(){ const ha=((h%12)+m/60)*30, ma=m*6;
+    const ticks=Array.from({length:12},(_,k)=>{const a=k*30*Math.PI/180;return `<line x1="${75+Math.sin(a)*58}" y1="${75-Math.cos(a)*58}" x2="${75+Math.sin(a)*(k%3?64:66)}" y2="${75-Math.cos(a)*(k%3?64:66)}" stroke="var(--ink)" stroke-width="${k%3?2:4}" stroke-linecap="round"/>`;}).join('');
+    return `<svg class="clock" viewBox="0 0 150 150" role="img" aria-label="Reloj"><circle cx="75" cy="75" r="70" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>${ticks}<line x1="75" y1="75" x2="75" y2="38" stroke="var(--ink)" stroke-width="6" stroke-linecap="round" transform="rotate(${ha} 75 75)"/><line x1="75" y1="75" x2="75" y2="20" stroke="var(--f)" stroke-width="3.5" stroke-linecap="round" transform="rotate(${ma} 75 75)"/><circle cx="75" cy="75" r="5" fill="var(--ink)"/></svg>`; }
+  function draw(){
+    const right=tg(h,m); const set=new Set([right]);
+    if(m===30) set.add('halb '+HN[h]);
+    if(m===45) set.add('Viertel nach '+HN[nx(h)]);
+    if(m===15) set.add('Viertel vor '+HN[h]);
+    while(set.size<4) set.add(tg(Math.floor(Math.random()*12)+1,pick([0,15,30,45])));
+    const opts=shuffle([...set].slice(0,4));
+    body.innerHTML=`${svg()}<div class="copts">${opts.map(o=>`<button type="button" class="opt" data-o="${o}">Es ist ${o}.</button>`).join('')}</div><div class="fb"></div><button type="button" class="btn ghost" data-a="next">Otra hora</button>`;
+    body._right=right;
+  }
+  el.addEventListener('click',e=>{
+    const o=e.target.closest('[data-o]');
+    if(o&&!o.disabled){ const ok=o.dataset.o===body._right; body.querySelectorAll('[data-o]').forEach(x=>{x.disabled=true; if(x.dataset.o===body._right) x.classList.add('right');}); if(!ok) o.classList.add('wrong');
+      body.querySelector('.fb').innerHTML=`${ok?'<span class="ok">✓ ¡Bien!</span>':'<span class="no">✗ No.</span>'} Son las ${h}:${String(m).padStart(2,'0')}: <button type="button" class="say" data-say="Es ist ${body._right}">Es ist ${body._right}.</button>`; speak('Es ist '+body._right); }
+    if(e.target.closest('[data-a="next"]')){ h=Math.floor(Math.random()*12)+1; m=pick([0,15,30,30,45]); draw(); }
+  });
+  draw();
+}
+
+/* ---- widget: conjugación ---- */
+const PRON=[['ich','yo','ich'],['du','tú','du'],['er','él','er'],['sie','ella','er'],['es','neutro','er'],['wir','nosotros','wir'],['ihr','ustedes (inf.)','ihr'],['sie','ellos','sie'],['Sie','usted','sie']];
+function conj(inf,p){ const st=inf.slice(0,-2), e=/[td]$/.test(st); return st+({ich:'e',du:e?'est':'st',er:e?'et':'t',wir:'en',ihr:e?'et':'t',sie:'en'})[p]; }
+function wConj(el){
+  let v=VERBS[1], p=PRON[1];
+  el.innerHTML=`<div class="wbar"><span class="lab">Verbos regulares</span></div><div class="wbody"></div>`;
+  const body=el.querySelector('.wbody');
+  function draw(){
+    body.innerHTML=`<div class="prompt"><span class="pr">${p[0]}</span> <span style="color:var(--muted)">(${p[1]})</span> + <span class="pr">${v[0]}</span> <span style="color:var(--muted)">(${v[1]})</span></div><div class="row"><label class="sel" for="conj-in">${esc(p[0])}</label><input type="text" id="conj-in" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px" placeholder="escribe el verbo"><button type="button" class="btn" data-a="check">Comprobar</button></div><div class="fb"></div><button type="button" class="btn ghost" data-a="next">Otro</button>`;
+  }
+  function check(){ const want=conj(v[0],p[2]); let got=norm(body.querySelector('#conj-in').value); got=got.replace(new RegExp('^'+p[0].toLowerCase()+' '),'');
+    const full=`${p[0]} ${want}`; body.querySelector('.fb').innerHTML=(got===want?'<span class="ok">✓ Correcto:</span> ':'<span class="no">✗ Es:</span> ')+`<button type="button" class="say" data-say="${full}">${full}</button>`; speak(full); }
+  el.addEventListener('click',e=>{ const a=e.target.closest('[data-a]'); if(!a) return; if(a.dataset.a==='check') check(); if(a.dataset.a==='next'){ v=pick(VERBS); p=pick(PRON); draw(); body.querySelector('#conj-in').focus(); } });
+  el.addEventListener('keydown',e=>{ if(e.key==='Enter'&&e.target.id==='conj-in') check(); });
+  draw();
+}
+
+/* ---- widget: ordenar ---- */
+function wOrder(el){
+  let idx=0, pool=[], ans=[];
+  el.innerHTML=`<div class="wbar"><span class="lab">Frase <span id="ord-n"></span></span></div><div class="wbody"></div>`;
+  const body=el.querySelector('.wbody');
+  function load(){ const it=ORDER_ITEMS[idx]; let s; do{ s=shuffle(it.tok.map((t,k)=>({t,k}))); }while(it.tok.length>1&&s.every((x,k)=>x.k===k)); pool=s; ans=[]; draw(); }
+  function draw(){ const it=ORDER_ITEMS[idx]; el.querySelector('#ord-n').textContent=`${idx+1} de ${ORDER_ITEMS.length}`;
+    body.innerHTML=`<div class="prompt">«${it.es}»</div><div class="ans" aria-label="Tu frase">${ans.map((x,k)=>`<button type="button" class="tok" data-back="${k}">${x.t}</button>`).join('')||'<span style="color:var(--muted);font-size:14px">Toca las palabras en orden</span>'}</div><div class="row">${pool.map((x,k)=>`<button type="button" class="tok" data-take="${k}">${x.t}</button>`).join('')}</div><div class="row"><button type="button" class="btn" data-a="check" ${pool.length?'disabled':''}>Comprobar</button><button type="button" class="btn ghost" data-a="next">Siguiente frase</button></div><div class="fb"></div>`; }
+  el.addEventListener('click',e=>{
+    const t=e.target.closest('[data-take]'), b=e.target.closest('[data-back]'), a=e.target.closest('[data-a]');
+    if(t){ ans.push(pool.splice(+t.dataset.take,1)[0]); draw(); }
+    else if(b){ pool.push(ans.splice(+b.dataset.back,1)[0]); draw(); }
+    else if(a&&a.dataset.a==='check'){ const it=ORDER_ITEMS[idx]; const s=norm(ans.map(x=>x.t).join(' ')); const ok=it.ok.includes(s);
+      const shown=ans.map(x=>x.t).join(' '); const sent=shown.charAt(0).toUpperCase()+shown.slice(1)+(it.es.includes('?')?'?':'.');
+      const canon=it.tok.join(' '); const canonS=canon.charAt(0).toUpperCase()+canon.slice(1)+(it.es.includes('?')?'?':'.');
+      body.querySelector('.fb').innerHTML=ok?`<span class="ok">✓ ¡Perfecto!</span> <button type="button" class="say" data-say="${sent}">${sent}</button>`:`<span class="no">✗ Revisa la posición del verbo.</span> Una respuesta correcta: <button type="button" class="say" data-say="${canonS}">${canonS}</button>`;
+      speak(ok?sent:canonS); }
+    else if(a&&a.dataset.a==='next'){ idx=(idx+1)%ORDER_ITEMS.length; load(); }
+  });
+  load();
+}
+
+/* ---- pronunciación ---- */
+const STANDALONE=(()=>{ try{ return window.top===window.self; }catch(e){ return false; } })();
+const MIC=STANDALONE&&!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)&&typeof MediaRecorder!=='undefined';
+const SR=STANDALONE?(window.SpeechRecognition||window.webkitSpeechRecognition||null):null;
+function speakP(text,rate){ return new Promise(res=>{ let done=false; const fin=()=>{ if(!done){ done=true; res(); } };
+  if(!hasTTS){ setTimeout(fin,400); return; }
+  try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='de-DE'; if(deVoice) u.voice=deVoice; u.rate=rate; u.onend=fin; u.onerror=fin; speechSynthesis.speak(u); }catch(e){ fin(); }
+  setTimeout(fin,text.length*130/rate+2500); }); }
+const PAIRS=[
+ ['ü · u','Mutter','madre','Mütter','madres'],['ü · u','Bruder','hermano','Brüder','hermanos'],['ü · u','Kuchen','pastel','Küchen','cocinas'],['ü · u','fuhr','manejó','für','para'],
+ ['ü · i','Tier','animal','Tür','puerta'],['ü · i','Kiste','caja','Küste','costa'],['ü · i','vier','cuatro','für','para'],['ü · i','spielen','jugar','spülen','enjuagar'],
+ ['ö · o','schon','ya','schön','bonito'],['ö · o','Tochter','hija','Töchter','hijas'],['ö · o','Ofen','horno','Öfen','hornos'],['ö · o','konnte','pudo','könnte','podría'],
+ ['ö · e','lesen','leer','lösen','resolver'],['ö · e','kennen','conocer','können','poder'],['ö · e','Sehne','tendón','Söhne','hijos'],
+ ['ei · ie','Wein','vino','Wien','Viena'],['ei · ie','leider','lamentablemente','Lieder','canciones'],['ei · ie','Reise','viaje','Riese','gigante'],['ei · ie','Weise','manera','Wiese','pradera'],
+ ['larga · corta','Staat','estado, país','Stadt','ciudad'],['larga · corta','Miete','renta','Mitte','centro'],['larga · corta','Ofen','horno','offen','abierto'],['larga · corta','bieten','ofrecer','bitten','pedir'],['larga · corta','Hüte','sombreros','Hütte','cabaña'],
+ ['ch · sch','Kirche','iglesia','Kirsche','cereza'],['ch · sch','mich','me, a mí','misch','¡mezcla!'],
+];
+const SNDS=[
+ {s:'ü', how:'Di «i» y, sin mover la lengua, redondea los labios como para silbar.', ex:['über','für','müde','Tür'], more:'Si te sale «u», la lengua se fue hacia atrás: déjala adelante, tocando los dientes de abajo.'},
+ {s:'ö', how:'Di «e» y redondea los labios como para decir «o».', ex:['schön','hören','können','Österreich'], more:'Revisa en el espejo: los labios redondos, la lengua igual que en la «e».'},
+ {s:'ä', how:'Una «e» abierta, con la boca un poco más abierta que en español.', ex:['Mädchen','Käse','spät','Bär'], more:'Casi siempre puedes decirla como la «e» de «perro» y se entiende.'},
+ {s:'ch suave', how:'Sonríe un poco y sopla como en «sh», con la lengua alta, casi tocando el paladar. Va después de e, i, ä, ö, ü y de consonantes.', ex:['ich','nicht','Milch','Mädchen'], more:'Truco: di «hi» muy fuerte y largo, sin voz. Ese soplido es el sonido.'},
+ {s:'ch fuerte', how:'Casi la «j» española, pero más suave. Va después de a, o, u y au.', ex:['Buch','acht','Nacht','auch'], more:'Si suena muy raspado, relaja la garganta: es un soplido, no un gargarismo.'},
+ {s:'r', how:'Se hace atrás, en la garganta, como un gargarismo suave. Al final de sílaba se vuelve casi una «a».', ex:['rot','Reise','hier','Vater'], more:'Si te cuesta, una r española suave también se entiende; muchos alemanes del sur la usan.'},
+ {s:'larga · corta', how:'Vocal larga antes de h, de doble vocal o de una sola consonante; corta antes de dos consonantes. Cambia el significado.', ex:['Staat','Stadt','Miete','Mitte'], more:'Alarga la vocal larga casi el doble de lo que harías en español.'},
+ {s:'z', how:'Siempre «ts», como en «pizza». Nunca como la z de España ni como s.', ex:['Zeit','zehn','Zucker','zwei'], more:'Toca primero con la punta de la lengua detrás de los dientes (t) y suelta el aire (s).'},
+ {s:'ei · ie', how:'Lee la segunda letra: «ei» suena «ai», «ie» suena «i» larga.', ex:['Wein','Wien','Reise','Riese'], more:'Así nunca te confundes: en «ie» manda la e (es una i larga), en «ei» se dicen las dos.'},
+ {s:'-e · -er', how:'La -e final es una e corta y relajada. La -er final suena casi como «a».', ex:['Name','bitte','Lehrer','Wasser'], more:'No digas «Lehrer» con r marcada al final: «LEE-ra».'},
+];
+const PHRASES=[
+ ['Guten Morgen! Wie geht es dir?','¡Buenos días! ¿Cómo estás?'],['Ich heiße Carlos und ich komme aus Mexiko.','Me llamo Carlos y soy de México.'],
+ ['Ich hätte gern einen Kaffee, bitte.','Me gustaría un café, por favor.'],['Entschuldigung, wo ist der Bahnhof?','Disculpe, ¿dónde está la estación de tren?'],
+ ['Ich lerne seit zwei Wochen Deutsch.','Llevo dos semanas aprendiendo alemán.'],['Das ist wirklich schön!','¡Qué bonito está!'],
+ ['Wie spät ist es? Es ist halb vier.','¿Qué hora es? Son las tres y media.'],['Können Sie das bitte wiederholen?','¿Puede repetirlo, por favor?'],
+ ['Ich verstehe das leider nicht.','Lamentablemente no lo entiendo.'],['Sprechen Sie bitte etwas langsamer.','Hable un poco más despacio, por favor.'],
+ ['Die Rechnung, bitte. Stimmt so.','La cuenta, por favor. Quédese el cambio.'],['Am Wochenende spiele ich Fußball.','El fin de semana juego futbol.'],
+];
+const TWISTERS=[
+ ['Fischers Fritz fischt frische Fische, frische Fische fischt Fischers Fritz.','Fritz, el del pescador, pesca peces frescos; peces frescos pesca Fritz, el del pescador.','sch y f'],
+ ['Blaukraut bleibt Blaukraut und Brautkleid bleibt Brautkleid.','La col morada sigue siendo col morada y el vestido de novia sigue siendo vestido de novia.','bl, br y au'],
+ ['Zwischen zwei Zwetschgenzweigen zwitschern zwei Schwalben.','Entre dos ramas de ciruelo trinan dos golondrinas.','z = ts'],
+ ['Esel essen Nesseln nicht, Nesseln essen Esel nicht.','Los burros no comen ortigas, las ortigas no comen burros.','s y e'],
+ ['Wenn Fliegen hinter Fliegen fliegen, fliegen Fliegen Fliegen hinterher.','Cuando moscas vuelan detrás de moscas, las moscas persiguen a las moscas.','ie y fl'],
+ ['Schnecken erschrecken, wenn Schnecken an Schnecken schlecken, weil zum Schrecken vieler Schnecken Schnecken nicht schmecken.','Los caracoles se asustan cuando lamen caracoles, porque para susto de muchos caracoles, los caracoles no saben bien.','sch y ck'],
+];
+const PLAY='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+let ptab='oido', runId=0, rec=null;
+function pron(){
+  setNav('aussprache');
+  const tabs=[['oido','Oído'],['sonidos','Sonidos'],['repetir','Repetir'],['trabalenguas','Trabalenguas']];
+  app.innerHTML=`<div class="pron"><header class="th"><h1>Aussprache</h1><p>Pronunciación: entrena el oído, aprende a poner la boca y repite en voz alta. Diez minutos al día aquí hacen más por tu acento que una hora leyendo.</p></header>
+    <div class="ptabs" role="group" aria-label="Ejercicios">${tabs.map(t=>`<button type="button" data-pt="${t[0]}" aria-pressed="${t[0]===ptab}">${t[1]}</button>`).join('')}</div>
+    <div id="pbody"></div></div>`;
+  app.querySelector('.ptabs').onclick=e=>{ const b=e.target.closest('[data-pt]'); if(!b) return; ptab=b.dataset.pt; runId++; app.querySelectorAll('[data-pt]').forEach(x=>x.setAttribute('aria-pressed',x===b)); drawTab(); };
+  drawTab();
+}
+function drawTab(){ const el=$('#pbody'); ({oido:tOido,sonidos:tSonidos,repetir:tRepetir,trabalenguas:tTrab})[ptab](el); }
+function tOido(el){
+  const cats=['todos',...new Set(PAIRS.map(p=>p[0]))]; let cat='todos', cur=null, tgt=0, done=false, ok=0, n=0;
+  el.innerHTML=`<div class="widget"><div class="wbar"><span class="lab">¿Cuál escuchaste?</span><span class="sel" id="o-score">0 de 0</span></div><div class="wbody">
+    <div class="cats" role="group" aria-label="Sonidos">${cats.map(c=>`<button type="button" data-c="${c}" aria-pressed="${c==='todos'}">${c}</button>`).join('')}</div>
+    <button type="button" class="play" id="o-play" aria-label="Escuchar la palabra">${PLAY}</button>
+    <div class="pair" id="o-pair"></div><div class="fb" id="o-fb">Toca ▶ para escuchar una de las dos palabras.</div>
+    <button type="button" class="btn ghost" id="o-next">Otra pareja</button></div></div>
+    <aside class="tip"><span class="lab">Cómo usarlo</span><p>Son pares de palabras que solo cambian en un sonido. Al principio vas a fallar seguido; es normal. Tu oído se ajusta en unos días, y lo que distingues al oír lo empiezas a pronunciar mejor.</p></aside>`;
+  const pairEl=$('#o-pair'), fb=$('#o-fb');
+  function next(play){ const pool=PAIRS.filter(p=>cat==='todos'||p[0]===cat); let p; do{ p=pick(pool); }while(pool.length>1&&p===cur); cur=p; tgt=Math.random()<.5?0:1; done=false;
+    pairEl.innerHTML=[1,3].map((k,j)=>`<button type="button" class="opt" data-o="${j}">${cur[k]}<small hidden>${cur[k+1]}</small></button>`).join('');
+    fb.textContent=play?'¿Cuál fue?':'Toca ▶ para escuchar una de las dos palabras.'; if(play) say(); }
+  const say=()=>speakP(cur[tgt===0?1:3], S.slow?0.6:0.85);
+  el.onclick=e=>{
+    const c=e.target.closest('[data-c]'); if(c){ cat=c.dataset.c; el.querySelectorAll('[data-c]').forEach(x=>x.setAttribute('aria-pressed',x===c)); next(false); return; }
+    if(e.target.closest('#o-play')){ say(); return; }
+    if(e.target.closest('#o-next')){ next(true); return; }
+    const o=e.target.closest('[data-o]'); if(!o) return; const j=+o.dataset.o;
+    if(done){ speakP(cur[j===0?1:3], S.slow?0.6:0.85); return; }
+    done=true; n++; const good=j===tgt; if(good) ok++;
+    pairEl.querySelectorAll('.opt').forEach((b,k)=>{ b.querySelector('small').hidden=false; if(k===tgt) b.classList.add('right'); else if(k===j) b.classList.add('wrong'); });
+    fb.innerHTML=`${good?'<span class="ok">✓ ¡Bien!</span>':'<span class="no">✗ Era «'+cur[tgt===0?1:3]+'».</span>'} Toca cada palabra para compararlas.`;
+    $('#o-score').textContent=`${ok} de ${n}`;
+  };
+  next(false);
+}
+function tSonidos(el){
+  el.innerHTML=`<div class="snds">${SNDS.map(s=>`<div class="snd"><h3>${s.s}</h3><p>${s.how}</p><div class="ex">${s.ex.map(w=>`<button type="button" class="say" data-say="${w}">${w}</button>`).join('')}</div><p class="more">${s.more}</p></div>`).join('')}</div>
+  ${MIC?'':`<aside class="tip"><span class="lab">Grábate con tu iPhone</span><p>Abre <b>Notas de voz</b>, graba las cuatro palabras de un sonido y escúchate justo después de oír el audio aquí. Escucharte es incómodo, pero es lo que más rápido corrige el acento.</p></aside>`}`;
+}
+function tRepetir(el){
+  el.innerHTML=`<p style="margin:0 0 6px">Toca <b>Practicar</b>: oyes la frase lenta, la repites en voz alta mientras avanza la barra, luego la oyes a velocidad normal y la repites otra vez. Imita también la melodía, no solo los sonidos.</p>
+  <div class="shl">${PHRASES.map((p,i)=>`<div class="sh" data-i="${i}"><span><button type="button" class="say de" data-say="${esc(p[0])}">${p[0]}</button><span class="es">${p[1]}</span></span>
+    <span class="row" style="justify-content:flex-end"><button type="button" class="btn hl" data-run>Practicar</button>${MIC?'<button type="button" class="btn ghost" data-rec>● Grabarme</button><button type="button" class="btn ghost" data-mine hidden>▶ Mi voz</button>':''}${SR?'<button type="button" class="btn ghost" data-sr>¿Se entiende?</button>':''}</span>
+    <span class="st"></span><span class="bar"><i></i></span></div>`).join('')}</div>
+  ${MIC?'':`<aside class="tip"><span class="lab">Para compararte</span><p>Graba la frase en <b>Notas de voz</b> y escúchala después del audio. En la versión app de esta página podrás grabarte aquí mismo.</p></aside>`}`;
+  el.onclick=e=>{ const card=e.target.closest('.sh'); if(!card) return; const text=PHRASES[+card.dataset.i][0];
+    if(e.target.closest('[data-run]')) shadow(card,text);
+    else if(e.target.closest('[data-rec]')) recToggle(e.target.closest('[data-rec]'),card);
+    else if(e.target.closest('[data-mine]')){ try{ new Audio(card._audio).play(); }catch(err){} }
+    else if(e.target.closest('[data-sr]')) listen(card,text); };
+}
+async function shadow(card,text){
+  const id=++runId; document.querySelectorAll('.sh.run').forEach(c=>{ c.classList.remove('run'); const b=c.querySelector('.bar i'); if(b){ b.style.transition='none'; b.style.width='0'; } });
+  card.classList.add('run'); const st=card.querySelector('.st'), bar=card.querySelector('.bar i');
+  const steps=[['Escucha (lento)…',0.6],['Tu turno: repítela en voz alta',0,0.6],['Escucha (normal)…',0.92],['Otra vez, a velocidad normal',0,0.92]];
+  for(const s of steps){ if(id!==runId) return; st.textContent=s[0]; bar.style.transition='none'; bar.style.width='0';
+    if(s[1]) await speakP(text,s[1]);
+    else { const ms=Math.round(text.length*85/s[2]+1200); void bar.offsetWidth; bar.style.transition=`width ${ms}ms linear`; bar.style.width='100%'; await new Promise(r=>setTimeout(r,ms)); } }
+  if(id!==runId) return; bar.style.transition='none'; bar.style.width='0'; card.classList.remove('run'); st.textContent='✓ Listo. Repítela hasta que te salga sin pensar.';
+}
+async function recToggle(btn,card){
+  const st=card.querySelector('.st');
+  if(rec&&rec.btn===btn){ rec.mr.stop(); return; }
+  if(rec) rec.mr.stop();
+  try{ const stream=await navigator.mediaDevices.getUserMedia({audio:true}); const mr=new MediaRecorder(stream), chunks=[];
+    mr.ondataavailable=e=>{ if(e.data&&e.data.size) chunks.push(e.data); };
+    mr.onstop=()=>{ stream.getTracks().forEach(t=>t.stop()); card._audio=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType||'audio/mp4'})); btn.textContent='● Grabar de nuevo'; card.querySelector('[data-mine]').hidden=false; st.textContent='Escucha el original y luego tu voz.'; rec=null; };
+    rec={mr,btn}; mr.start(); btn.textContent='■ Detener'; st.textContent='Grabando… di la frase y toca Detener.';
+  }catch(e){ st.textContent='No se pudo usar el micrófono. Revisa el permiso en Ajustes → Safari → Micrófono.'; }
+}
+function listen(card,text){
+  const st=card.querySelector('.st');
+  try{ const r=new SR(); r.lang='de-DE'; r.interimResults=false; r.maxAlternatives=1;
+    st.textContent='Te escucho… di la frase.';
+    r.onresult=e=>{ const heard=e.results[0][0].transcript; const want=norm(text).split(' '), got=new Set(norm(heard).split(' '));
+      const hit=want.filter(w=>got.has(w)).length, pct=Math.round(hit/want.length*100);
+      st.innerHTML=`${pct>=80?'<span class="ok">✓</span>':pct>=50?'<span>~</span>':'<span class="no">✗</span>'} Entendí: «${esc(heard)}» · ${pct}% de las palabras`; };
+    r.onerror=()=>{ st.textContent='No te escuché bien. Intenta de nuevo en un lugar con menos ruido.'; };
+    r.start();
+  }catch(e){ st.textContent='El reconocimiento de voz no está disponible en este navegador.'; }
+}
+function tTrab(el){
+  el.innerHTML=`<p style="margin:0 0 12px">Los trabalenguas alemanes (<i>Zungenbrecher</i>, «rompelenguas») entrenan los sonidos difíciles. Empieza lento, sin trabarte, y sube la velocidad poco a poco.</p>
+  <div class="shl">${TWISTERS.map(t=>`<div class="tw"><span class="lab">Entrena: ${t[2]}</span><span class="de">${t[0]}</span><span class="es">${t[1]}</span><span class="row"><button type="button" class="btn ghost" data-tw="${esc(t[0])}" data-r="0.55">Lento</button><button type="button" class="btn" data-tw="${esc(t[0])}" data-r="0.95">Normal</button></span></div>`).join('')}</div>`;
+  el.onclick=e=>{ const b=e.target.closest('[data-tw]'); if(b) speakP(b.dataset.tw,+b.dataset.r); };
+}
+
+/* ---- der/die/das ---- */
+function genderPool(){ const m=new Map(); L.forEach(l=>l.vocab.forEach(v=>{ if(v[3]&&v[3]!=='p') m.set(v[0],[v[0],v[1],v[3]]); })); EXTRA_NOUNS.forEach(x=>m.set(x[0],x)); return [...m.values()]; }
+const SEASONS=['montag','dienstag','mittwoch','donnerstag','freitag','samstag','sonntag','januar','februar','märz','april','mai','juni','juli','august','september','oktober','november','dezember','sommer','winter','herbst','frühling'];
+function hint(w,g){ const s=w.toLowerCase();
+  if(/(ung|heit|keit|schaft|ion|tät)$/.test(s)) return 'Las terminaciones -ung, -heit, -keit, -schaft, -ion y -tät siempre son die.';
+  if(/(chen|lein)$/.test(s)) return 'Los diminutivos en -chen y -lein siempre son das.';
+  if(/ismus$/.test(s)) return 'Las palabras en -ismus son der.';
+  if(SEASONS.includes(s)) return 'Días, meses y estaciones son der.';
+  if(/um$/.test(s)&&g==='n') return 'Muchas palabras en -um son das.';
+  if(s==='essen') return 'Un verbo usado como sustantivo es das.';
+  if(/e$/.test(s)&&g==='f') return 'Muchos sustantivos que terminan en -e son die.';
+  if(s==='mädchen') return '-chen manda: das Mädchen.';
+  return 'Sin regla clara: apréndela con su artículo.'; }
+function gender(){
+  setNav('genero');
+  const pool=genderPool(); let cur=null, streak=0, best=S.gbest||0, seen=0, ok=0, locked=false;
+  app.innerHTML=`<div class="trainer"><header class="th"><h1>der · die · das</h1><p>Elige el artículo de cada sustantivo. Hay ${pool.length} palabras de las lecciones y otras de uso diario.</p></header>
+    <div class="stats"><div><b id="g-streak">0</b>racha</div><div><b id="g-best">${best}</b>mejor racha</div><div><b id="g-acc">—</b>aciertos</div></div>
+    <div class="gcard"><div class="gword" id="g-word"></div><div class="gmean" id="g-mean"></div><div class="ghint" id="g-hint"></div></div>
+    <div class="gbtns"><button type="button" class="gb m" data-g="m">der<span>1 · masc.</span></button><button type="button" class="gb f" data-g="f">die<span>2 · fem.</span></button><button type="button" class="gb n" data-g="n">das<span>3 · neutro</span></button></div>
+    <div class="row" style="margin-top:14px"><button type="button" class="btn" id="g-next" hidden>Siguiente →</button></div>
+    <p class="kbd">En teclado: 1, 2, 3 y Enter.</p></div>`;
+  const W=$('#g-word'), M=$('#g-mean'), H=$('#g-hint'), NX=$('#g-next');
+  function next(){ let c; do{ c=pick(pool); }while(cur&&c[0]===cur[0]); cur=c; locked=false; W.textContent=cur[0]; M.textContent=''; H.textContent=''; NX.hidden=true;
+    app.querySelectorAll('.gb').forEach(b=>{b.disabled=false;b.classList.remove('pick');}); }
+  function answer(g){ if(locked) return; locked=true; seen++; const good=g===cur[2]; if(good){ok++;streak++;} else streak=0;
+    if(streak>best){best=streak;S.gbest=best;save();}
+    W.innerHTML=`<span class="art g-${cur[2]}">${ART[cur[2]]}</span>${esc(cur[0])}`;
+    M.innerHTML=`${good?'<b style="color:var(--ok)">✓ Correcto</b>':'<b style="color:var(--bad)">✗ Es '+ART[cur[2]]+'</b>'} · ${esc(cur[1])}`;
+    H.textContent=hint(cur[0],cur[2]);
+    app.querySelectorAll('.gb').forEach(b=>{ b.disabled=true; if(b.dataset.g===cur[2]) b.classList.add('pick'); });
+    $('#g-streak').textContent=streak; $('#g-best').textContent=best; $('#g-acc').textContent=Math.round(ok/seen*100)+'%';
+    NX.hidden=false; speak(ART[cur[2]]+' '+cur[0]); NX.focus({preventScroll:true}); }
+  app.querySelector('.gbtns').onclick=e=>{ const b=e.target.closest('[data-g]'); if(b) answer(b.dataset.g); };
+  NX.onclick=next;
+  keyHandler=e=>{ if(e.target.matches('input,select,textarea')) return; if(['1','2','3'].includes(e.key)) answer(['m','f','n'][+e.key-1]); else if(e.key==='Enter'&&locked){ e.preventDefault(); next(); } };
+  next();
+}
+
+/* ---- repaso ---- */
+function review(){
+  setNav('repaso');
+  const doneIds=S.done.slice();
+  let src=doneIds.length?'done':'all';
+  app.innerHTML=`<div class="trainer"><header class="th"><h1>Repaso</h1><p>Tarjetas con el vocabulario de las lecciones. Las que marcas como «Otra vez» aparecen más seguido.</p></header>
+    <div class="row" style="justify-content:flex-start;margin:20px 0 14px"><label class="sel" for="rv-src">Palabras de</label><select id="rv-src"><option value="done">Lecciones completadas (${doneIds.length})</option><option value="all">Todas las lecciones</option>${L.map((l,i)=>`<option value="${l.id}">Lección ${i+1}: ${l.de}</option>`).join('')}</select></div>
+    <div class="gcard flip"><div class="gword" id="rv-word"></div><div class="vp" id="rv-p" style="font-size:14px"></div><div class="gmean" id="rv-mean"></div>
+      <div class="row" id="rv-front"><button type="button" class="btn hl" id="rv-show">Mostrar significado</button><button type="button" class="btn ghost" id="rv-say">${ICON} Escuchar</button></div>
+      <div class="row" id="rv-back" hidden><button type="button" class="btn ghost" id="rv-again" style="border-color:var(--bad)">Otra vez</button><button type="button" class="btn" id="rv-know">Lo sabía</button></div>
+    </div><div class="boxes" id="rv-boxes"></div></div>`;
+  const sel=$('#rv-src'); sel.value=src;
+  let cards=[], cur=null;
+  function build(){ src=sel.value; let ls = src==='done'?L.filter(l=>S.done.includes(l.id)):src==='all'?L:L.filter(l=>l.id===src); if(!ls.length) ls=[L[0]];
+    const m=new Map(); ls.forEach(l=>l.vocab.forEach(v=>m.set(sayText(v),v))); cards=[...m.values()]; boxes(); next(); }
+  function box(v){ return S.box[sayText(v)]||0; }
+  function boxes(){ const c=[0,0,0,0]; cards.forEach(v=>c[Math.min(box(v),3)]++); $('#rv-boxes').innerHTML=`<span>Nuevas ${c[0]}</span><span>Aprendiendo ${c[1]}</span><span>Bien ${c[2]}</span><span>Dominadas ${c[3]}</span>`; }
+  function next(){ const weights=cards.map(v=>({v,w:[8,4,2,1][Math.min(box(v),3)]})); let tot=weights.reduce((a,b)=>a+b.w,0), r=Math.random()*tot, c=weights[0].v;
+    for(const x of weights){ r-=x.w; if(r<=0){c=x.v;break;} } if(cur&&cards.length>1&&c===cur) return next(); cur=c;
+    $('#rv-word').innerHTML=deHTML(cur); $('#rv-p').textContent=''; $('#rv-mean').textContent=''; $('#rv-front').hidden=false; $('#rv-back').hidden=true; }
+  function grade(up){ const k=sayText(cur); S.box[k]=up?Math.min(box(cur)+1,3):0; save(); boxes(); next(); }
+  sel.onchange=build;
+  $('#rv-show').onclick=()=>{ $('#rv-mean').textContent=cur[1]; $('#rv-p').textContent=cur[2]; $('#rv-front').hidden=true; $('#rv-back').hidden=false; speak(sayText(cur)); $('#rv-know').focus({preventScroll:true}); };
+  $('#rv-say').onclick=()=>speak(sayText(cur));
+  $('#rv-again').onclick=()=>grade(false);
+  $('#rv-know').onclick=()=>grade(true);
+  build();
+}
+
+/* ============ RUTEO ============ */
+let keyHandler=null;
+document.addEventListener('keydown',e=>{ if(keyHandler) keyHandler(e); });
+function route(){
+  keyHandler=null; runId++;
+  if(rec){ try{ rec.mr.stop(); }catch(e){} }
+  let h=''; try{ h=location.hash.slice(1); }catch(e){}
+  const li=L.findIndex(l=>l.id===h);
+  if(li>=0) lesson(li); else if(h==='repaso') review(); else if(h==='genero') gender(); else if(h==='aussprache') pron(); else home();
+  window.scrollTo(0,0);
+}
+document.addEventListener('click',e=>{
+  const s=e.target.closest('[data-say]'); if(s){ speak(s.dataset.say, s.classList.contains('say')||s.classList.contains('vcard')?s:null); }
+  const a=e.target.closest('a[href^="#"]'); if(a){ e.preventDefault(); const h=a.getAttribute('href'); try{ if(location.hash!==h) history.pushState(null,'',h); }catch(err){} route(); }
+});
+window.addEventListener('popstate',route);
+window.addEventListener('hashchange',route);
+const slowBtn=$('#slow'); slowBtn.setAttribute('aria-pressed',S.slow);
+slowBtn.onclick=()=>{ S.slow=!S.slow; slowBtn.setAttribute('aria-pressed',S.slow); save(); speak('Langsam und deutlich'); };
+route();
+</script>
+
+<script>
+if('serviceWorker' in navigator && location.protocol==='https:'){ window.addEventListener('load',()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }); }
+</script>
+</body>
+</html>
