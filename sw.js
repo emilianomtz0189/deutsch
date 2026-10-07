@@ -1,5 +1,5 @@
 // Guarda la app para usarla sin internet. Con internet, siempre carga la versión más nueva.
-const CACHE = 'deutsch-v1';
+const CACHE = 'deutsch-v2';
 const FILES = ['./', './index.html', './manifest.json', './icon.png'];
 
 self.addEventListener('install', e => {
